@@ -1,0 +1,20 @@
+[gd_scene load_steps=3 format=3 uid="uid://d4fl3bvumbxof"]
+
+[ext_resource type="Script" uid="uid://drxfs13sfy471" path="res://scripts/landing_pad.gd" id="1_4fe7r"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_x7iv8"]
+size = Vector2(100, 10)
+
+[node name="landing" type="Node2D"]
+
+[node name="Area2D" type="Area2D" parent="."]
+script = ExtResource("1_4fe7r")
+
+[node name="collision" type="CollisionShape2D" parent="Area2D"]
+shape = SubResource("RectangleShape2D_x7iv8")
+
+[node name="colored rectangle" type="ColorRect" parent="Area2D/collision"]
+clip_contents = true
+offset_right = 10.0
+offset_bottom = 10.0
+color = Color(0.32244363, 0.9973354, 1, 1)
