@@ -1,0 +1,35 @@
+[gd_scene load_steps=5 format=3 uid="uid://d4fl3bvumbxof"]
+
+[ext_resource type="Script" uid="uid://drxfs13sfy471" path="res://scripts/landing_pad.gd" id="1_4fe7r"]
+[ext_resource type="Script" uid="uid://cx5bhxxu0v4od" path="res://scripts/clearance_area.gd" id="2_oinba"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_x7iv8"]
+size = Vector2(100, 10)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_5uqto"]
+size = Vector2(100, 30)
+
+[node name="landing" type="Node2D"]
+
+[node name="PhysicalPad" type="StaticBody2D" parent="."]
+script = ExtResource("1_4fe7r")
+
+[node name="collision" type="CollisionShape2D" parent="PhysicalPad"]
+shape = SubResource("RectangleShape2D_x7iv8")
+
+[node name="colored rectangle" type="ColorRect" parent="PhysicalPad/collision"]
+clip_contents = true
+offset_left = -50.0
+offset_top = -5.0
+offset_right = 50.0
+offset_bottom = 5.0
+color = Color(0.32244363, 0.9973354, 1, 1)
+
+[node name="ClearanceArea" type="Area2D" parent="."]
+unique_name_in_owner = true
+script = ExtResource("2_oinba")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="ClearanceArea"]
+shape = SubResource("RectangleShape2D_5uqto")
+
+[connection signal="body_entered" from="ClearanceArea" to="ClearanceArea" method="_on_body_entered"]
