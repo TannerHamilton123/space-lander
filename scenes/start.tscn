@@ -1,29 +1,127 @@
-[gd_scene load_steps=5 format=3 uid="uid://bslnsn6w5d0d6"]
+[gd_scene load_steps=6 format=3 uid="uid://bslnsn6w5d0d6"]
 
 [ext_resource type="Script" uid="uid://4pgqsk2gykcg" path="res://scripts/start.gd" id="1_u80x2"]
-[ext_resource type="Texture2D" uid="uid://b83xblbbtvyxy" path="res://assets/lander.png" id="2_bodal"]
-[ext_resource type="Script" uid="uid://bbbm7f7t38hgf" path="res://scripts/character_body_2d.gd" id="2_kdmts"]
+[ext_resource type="PackedScene" uid="uid://bg6m4imqikpyo" path="res://scenes/lander.tscn" id="2_u80x2"]
+[ext_resource type="Script" uid="uid://cn6bb3x1ro8ty" path="res://scenes/bounds.gd" id="3_bodal"]
+[ext_resource type="Script" uid="uid://dcb124xvrpod" path="res://scenes/game_over.gd" id="3_kdmts"]
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_kdmts"]
-size = Vector2(16, 16)
+[sub_resource type="WorldBoundaryShape2D" id="WorldBoundaryShape2D_kdmts"]
 
-[node name="Node2D" type="Node2D"]
+[node name="level" type="Node2D"]
 script = ExtResource("1_u80x2")
 
-[node name="CharacterBody2D" type="CharacterBody2D" parent="." groups=["player"]]
+[node name="CharacterBody2D" parent="." instance=ExtResource("2_u80x2")]
 position = Vector2(35, 31)
-script = ExtResource("2_kdmts")
-
-[node name="Sprite2D" type="Sprite2D" parent="CharacterBody2D"]
-texture = ExtResource("2_bodal")
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="CharacterBody2D"]
-shape = SubResource("RectangleShape2D_kdmts")
 
 [node name="topo_area" type="Area2D" parent="."]
 
 [node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="topo_area"]
-build_mode = 1
-polygon = PackedVector2Array(0, 0, 5, 4)
+
+[node name="GameOver" type="Control" parent="."]
+process_mode = 3
+visible = false
+visibility_layer = 2
+z_index = 1
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_right = 1200.0
+offset_bottom = 800.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("3_kdmts")
+
+[node name="ColorRect" type="ColorRect" parent="GameOver"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0.70980394, 0, 0.09411765, 0.54509807)
+
+[node name="Label" type="Label" parent="GameOver"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -20.0
+offset_top = -11.5
+offset_right = 20.0
+offset_bottom = 11.5
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_font_sizes/font_size = 48
+text = "GAME OVER"
+
+[node name="Label2" type="Label" parent="GameOver"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -138.0
+offset_top = 55.0
+offset_right = 138.0
+offset_bottom = 122.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_font_sizes/font_size = 32
+text = "PRESS ENTER TO RESTART"
+
+[node name="bounds" type="Area2D" parent="."]
+script = ExtResource("3_bodal")
+
+[node name="leftbound" type="CollisionShape2D" parent="bounds"]
+rotation = 1.5707964
+shape = SubResource("WorldBoundaryShape2D_kdmts")
+
+[node name="rightbound" type="CollisionShape2D" parent="bounds"]
+position = Vector2(1200, 0)
+rotation = -1.5707964
+shape = SubResource("WorldBoundaryShape2D_kdmts")
+
+[node name="upperbound" type="CollisionShape2D" parent="bounds"]
+rotation = 3.1415927
+shape = SubResource("WorldBoundaryShape2D_kdmts")
+
+[node name="Control" type="Control" parent="."]
+layout_mode = 3
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_right = 1200.0
+offset_bottom = 800.0
+grow_horizontal = 0
+
+[node name="ProgressBar" type="ProgressBar" parent="Control"]
+layout_mode = 1
+anchors_preset = 10
+anchor_right = 1.0
+offset_bottom = 27.0
+grow_horizontal = 2
+value = 100.0
+rounded = true
+show_percentage = false
+
+[node name="Label" type="Label" parent="Control"]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -20.0
+offset_right = 20.0
+offset_bottom = 23.0
+grow_horizontal = 2
+text = "FUEL"
 
 [connection signal="body_entered" from="topo_area" to="." method="_on_topo_area_body_entered"]
+[connection signal="gui_input" from="GameOver" to="." method="_on_game_over_gui_input"]
+[connection signal="gui_input" from="GameOver" to="GameOver" method="_on_gui_input"]
+[connection signal="body_entered" from="bounds" to="." method="_on_bounds_body_entered"]

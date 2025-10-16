@@ -1,0 +1,16 @@
+[gd_scene load_steps=4 format=3 uid="uid://bg6m4imqikpyo"]
+
+[ext_resource type="Script" uid="uid://bbbm7f7t38hgf" path="res://scripts/lander.gd" id="1_os8ps"]
+[ext_resource type="Texture2D" uid="uid://b83xblbbtvyxy" path="res://assets/lander.png" id="2_3ri1r"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_kdmts"]
+size = Vector2(16, 16)
+
+[node name="lander" type="CharacterBody2D" groups=["player"]]
+script = ExtResource("1_os8ps")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("2_3ri1r")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("RectangleShape2D_kdmts")
