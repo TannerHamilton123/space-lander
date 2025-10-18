@@ -14,10 +14,12 @@ func _process(delta: float) -> void:
 
 func _on_body_entered(body: Node2D) -> void:
 	if body.is_in_group("player"):
-		if body.velocity.x > 10 or body.velocity.y > 10 or body.rotation_degrees > abs(45):
-			print("bad landing",body.velocity,body.rotation_degrees)
+		print("COLLISION AREA")
+		var speed = body.velocity.length()
+		if speed > 20 or body.rotation_degrees > abs(45):
+			print("bad landing",speed,body.rotation_degrees)
 			emit_signal("too_fast")
 		else:
-			print("good landing",body.velocity,body.rotation_degrees)
+			print("good landing",speed,body.rotation_degrees)
 			await get_tree().create_timer(2.0).timeout
 			get_tree().reload_current_scene()

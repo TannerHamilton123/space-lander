@@ -1,0 +1,21 @@
+[gd_scene load_steps=3 format=3 uid="uid://b7t2w7wsr07r4"]
+
+[ext_resource type="Script" uid="uid://cn6bb3x1ro8ty" path="res://scenes/bounds.gd" id="1_m2lla"]
+
+[sub_resource type="WorldBoundaryShape2D" id="WorldBoundaryShape2D_kdmts"]
+
+[node name="bounds" type="Area2D"]
+script = ExtResource("1_m2lla")
+
+[node name="leftbound" type="CollisionShape2D" parent="."]
+rotation = 1.5707964
+shape = SubResource("WorldBoundaryShape2D_kdmts")
+
+[node name="rightbound" type="CollisionShape2D" parent="."]
+position = Vector2(1200, 0)
+rotation = -1.5707964
+shape = SubResource("WorldBoundaryShape2D_kdmts")
+
+[node name="upperbound" type="CollisionShape2D" parent="."]
+rotation = 3.1415927
+shape = SubResource("WorldBoundaryShape2D_kdmts")

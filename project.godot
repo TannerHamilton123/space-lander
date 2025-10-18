@@ -13,12 +13,14 @@ config_version=5
 config/name="space lander"
 run/main_scene="res://scenes/start.tscn"
 config/features=PackedStringArray("4.5", "GL Compatibility")
+boot_splash/bg_color=Color(0.54898983, 0.1805582, 0.52143186, 1)
 config/icon="res://icon.svg"
 
 [display]
 
 window/size/viewport_width=1200
 window/size/viewport_height=800
+window/size/initial_position_type=3
 
 [dotnet]
 

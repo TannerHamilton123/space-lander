@@ -11,15 +11,17 @@ var landing_y : int
 var landing_size : int
 var landing_half_width : int
 
-@onready var landing_location = load("res://scenes/landing_platform.tscn").instantiate()
+@onready var landing_platform = $landing_platform
+@onready var lander = $lander
+@onready var bounds = $bounds
 
  
 func _ready() -> void:
-	add_child(landing_location)
+	bounds.body_entered.connect(_on_bounds_body_entered)
+	lander.too_fast.connect(game_over)
 	
 	make_landing()
 	make_topo()
-	validate_landing()       
  
 func make_topo():
 	for i in range(1,topo_points):
@@ -40,38 +42,33 @@ func make_topo():
 	
 	add_child(topo)
 	topo.points = topo_array
+	topo.width = 1
 	
 	topo_array.append(Vector2(end_x,end_y))
 	topo_array.push_front(Vector2(0,800))
 	
 	$topo_area/CollisionPolygon2D.set_polygon(topo_array)
    
-	
-
 func make_landing():
-	
-	
-	landing_location.position.x = randi_range(0,end_x)
-	landing_location.position.y = randi_range(bottom_limit,top_limit)
-	var collision_shape = landing_location.get_node("PhysicalPad/collision")
+	landing_platform.position.x = randi_range(0,end_x)
+	landing_platform.position.y = randi_range(bottom_limit,top_limit)
+	var collision_shape = landing_platform.get_node("PhysicalPad/collision")
 	landing_half_width = collision_shape.shape.extents[0]
-	landing_x = landing_location.position.x
-	landing_y = landing_location.position.y
+	landing_x = landing_platform.position.x
+	landing_y = landing_platform.position.y
+	print(landing_x," , ", landing_y)
 	
-func validate_landing():
-	var ClearanceArea = landing_location.get_node("ClearanceArea")
-	ClearanceArea.too_fast.connect(game_over)
-	if is_instance_valid(ClearanceArea):
-		ClearanceArea.too_fast.connect(game_over)
-		
+	
 
 
 func _on_topo_area_body_entered(body: Node2D) -> void:
 	if body.is_in_group("player"):
+		print("HIT THE GROUND")
 		game_over()
 
 func _on_bounds_body_entered(body: Node2D) -> void:
 	if body.is_in_group("player"):
+		print("OUT OF BOUNDS")
 		game_over()
 		
 func game_over() -> void:
