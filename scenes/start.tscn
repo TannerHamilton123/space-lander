@@ -121,6 +121,11 @@ offset_bottom = 23.0
 grow_horizontal = 2
 text = "FUEL"
 
+[node name="test for git" type="Control" parent="Control"]
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
 [connection signal="body_entered" from="topo_area" to="." method="_on_topo_area_body_entered"]
 [connection signal="gui_input" from="GameOver" to="." method="_on_game_over_gui_input"]
 [connection signal="gui_input" from="GameOver" to="GameOver" method="_on_gui_input"]
