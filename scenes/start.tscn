@@ -1,4 +1,4 @@
-[gd_scene load_steps=8 format=3 uid="uid://bslnsn6w5d0d6"]
+[gd_scene load_steps=9 format=3 uid="uid://bslnsn6w5d0d6"]
 
 [ext_resource type="Script" uid="uid://4pgqsk2gykcg" path="res://scripts/start.gd" id="1_u80x2"]
 [ext_resource type="PackedScene" uid="uid://d4fl3bvumbxof" path="res://scenes/landing_platform.tscn" id="2_4ge6i"]
@@ -7,6 +7,7 @@
 [ext_resource type="PackedScene" uid="uid://b7t2w7wsr07r4" path="res://scenes/bounds.tscn" id="4_4ge6i"]
 [ext_resource type="Texture2D" uid="uid://bog53013skwal" path="res://assets/360_F_470736409_BjMO4XuHintvApcIyuJM7DR65rTfWdXQ.jpg" id="5_0auqf"]
 [ext_resource type="PackedScene" uid="uid://bytaw5bxxhghh" path="res://scenes/ui.tscn" id="5_8itgj"]
+[ext_resource type="PackedScene" uid="uid://kosulmm3fh5c" path="res://scenes/completed.tscn" id="8_8itgj"]
 
 [node name="level" type="Node2D"]
 script = ExtResource("1_u80x2")
@@ -14,7 +15,7 @@ script = ExtResource("1_u80x2")
 [node name="landing_platform" parent="." instance=ExtResource("2_4ge6i")]
 
 [node name="lander" parent="." instance=ExtResource("2_u80x2")]
-position = Vector2(35, 31)
+position = Vector2(77, 85)
 
 [node name="topo_area" type="Area2D" parent="."]
 
@@ -25,6 +26,8 @@ position = Vector2(35, 31)
 [node name="bounds" parent="." instance=ExtResource("4_4ge6i")]
 
 [node name="UI" parent="." instance=ExtResource("5_8itgj")]
+offset_left = 0.0
+offset_right = 1200.0
 
 [node name="360F470736409BjMo4XuHintvApcIyuJm7dr65rTfWdXq" type="Sprite2D" parent="."]
 z_index = -1
@@ -35,5 +38,8 @@ region_rect = Rect2(0, 0, 1200, 800)
 metadata/_edit_lock_ = true
 
 [node name="Line2D" type="Line2D" parent="."]
+
+[node name="completed" parent="." instance=ExtResource("8_8itgj")]
+visible = false
 
 [connection signal="body_entered" from="topo_area" to="." method="_on_topo_area_body_entered"]

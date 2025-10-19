@@ -8,7 +8,6 @@ func _ready() -> void:
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 
-var root = preload("res://scenes/start.tscn").instantiate()
 func make_color():
 	var full_size = $collision.shape.extents * 2
 	$"collision/colored rectangle".pivot_offset = full_size / 2.0

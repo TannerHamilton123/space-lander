@@ -1,6 +1,7 @@
 extends CharacterBody2D
 
-signal too_fast
+signal bad_landing
+signal good_landing
 
 const THRUST = Vector2(0,-1.0)
 const GRAVITY = Vector2(0,20.0)
@@ -9,7 +10,6 @@ var speed : int
 var test_var : float
 var landed : bool = false
 
-@onready var landing_ray = $RayCast2D
 func _ready():
 	velocity = Vector2(10,0)
 
@@ -47,9 +47,8 @@ func controls(delta):
 
 func check_landing():
 	if speed > 20 or rotation_degrees > abs(45):
-		print("bad landing",speed,rotation_degrees)
-		emit_signal("too_fast")
+		emit_signal("bad_landing")
 	else:
-		print("good landing",speed,rotation_degrees)
-		
-		get_tree().reload_current_scene()
+
+		$"../completed/SCORE".text = str("SCORE: " ,int(100 - speed*2 - rotation_degrees*2))
+		emit_signal("good_landing")

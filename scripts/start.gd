@@ -18,7 +18,8 @@ var landing_half_width : int
  
 func _ready() -> void:
 	bounds.body_entered.connect(_on_bounds_body_entered)
-	lander.too_fast.connect(game_over)
+	lander.bad_landing.connect(game_over)
+	lander.good_landing.connect(completed)
 	
 	make_landing()
 	make_topo()
@@ -58,19 +59,20 @@ func make_landing():
 	landing_y = landing_platform.position.y
 	print(landing_x," , ", landing_y)
 	
-	
-
-
 func _on_topo_area_body_entered(body: Node2D) -> void:
 	if body.is_in_group("player"):
-		print("HIT THE GROUND")
+
 		game_over()
 
 func _on_bounds_body_entered(body: Node2D) -> void:
 	if body.is_in_group("player"):
-		print("OUT OF BOUNDS")
+
 		game_over()
 		
 func game_over() -> void:
 	$GameOver.show()
+	get_tree().paused = true
+
+func completed():
+	$completed.show()
 	get_tree().paused = true
