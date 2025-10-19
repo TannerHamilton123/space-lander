@@ -10,7 +10,7 @@ var landing_x : int
 var landing_y : int
 var landing_size : int
 var landing_half_width : int
-
+var slope = 0
 @onready var landing_platform = $landing_platform
 @onready var lander = $lander
 @onready var bounds = $bounds
@@ -26,14 +26,16 @@ func _ready() -> void:
  
 func make_topo():
 	for i in range(1,topo_points):
-		var slope = randi_range(-100,100)
+		slope += randi_range(-10,10)
 
 		var x : int = topo_array[i-1][0] + (end_x  / topo_points)
 		var y : int= topo_array[i-1][1] + slope
 		if y < bottom_limit:
 			y = bottom_limit
+			slope = 0
 		if y > top_limit:
 			y = top_limit
+			slope = 0
 		if x in range(landing_x-landing_half_width,landing_x+landing_half_width):
 			y = landing_y+5
 		topo_array.append(Vector2(x,y))
@@ -58,10 +60,11 @@ func make_landing():
 	landing_x = landing_platform.position.x
 	landing_y = landing_platform.position.y
 	print(landing_x," , ", landing_y)
+	$"UI/ROTATION".position = landing_platform.position + Vector2(-50,25)
+	$"UI/SPEED".position = landing_platform.position + Vector2(-50,50)
 	
 func _on_topo_area_body_entered(body: Node2D) -> void:
 	if body.is_in_group("player"):
-
 		game_over()
 
 func _on_bounds_body_entered(body: Node2D) -> void:

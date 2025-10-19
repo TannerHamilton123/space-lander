@@ -8,6 +8,9 @@ size = Vector2(16, 16)
 
 [node name="lander" type="CharacterBody2D" groups=["player"]]
 script = ExtResource("1_os8ps")
+landing_speed = 10.0
+landing_rotation = 10.0
+rotational_thrust = 0.005
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 texture = ExtResource("2_3ri1r")

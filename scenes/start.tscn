@@ -16,6 +16,7 @@ script = ExtResource("1_u80x2")
 
 [node name="lander" parent="." instance=ExtResource("2_u80x2")]
 position = Vector2(77, 85)
+rotational_thrust = 0.001
 
 [node name="topo_area" type="Area2D" parent="."]
 
@@ -29,7 +30,7 @@ position = Vector2(77, 85)
 offset_left = 0.0
 offset_right = 1200.0
 
-[node name="360F470736409BjMo4XuHintvApcIyuJm7dr65rTfWdXq" type="Sprite2D" parent="."]
+[node name="space_background" type="Sprite2D" parent="."]
 z_index = -1
 position = Vector2(602.25, 403.5)
 scale = Vector2(1.5929614, 2.2361112)
