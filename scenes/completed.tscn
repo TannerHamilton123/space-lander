@@ -1,6 +1,6 @@
 [gd_scene load_steps=2 format=3 uid="uid://kosulmm3fh5c"]
 
-[ext_resource type="Script" uid="uid://bu3kqjugmfy7s" path="res://scenes/completed.gd" id="1_pdlad"]
+[ext_resource type="Script" uid="uid://bu3kqjugmfy7s" path="res://scripts/completed.gd" id="1_pdlad"]
 
 [node name="completed" type="Control"]
 process_mode = 3

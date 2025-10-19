@@ -1,0 +1,57 @@
+[gd_scene load_steps=11 format=3 uid="uid://j0jfxdcek6h1"]
+
+[ext_resource type="Script" uid="uid://4pgqsk2gykcg" path="res://scripts/start.gd" id="1_hrcei"]
+[ext_resource type="PackedScene" uid="uid://d4fl3bvumbxof" path="res://scenes/landing_platform.tscn" id="2_xa7n4"]
+[ext_resource type="PackedScene" uid="uid://bg6m4imqikpyo" path="res://scenes/lander.tscn" id="3_bo4dx"]
+[ext_resource type="PackedScene" uid="uid://c7whbpeivyvsf" path="res://scenes/game_over.tscn" id="4_76toy"]
+[ext_resource type="PackedScene" uid="uid://b7t2w7wsr07r4" path="res://scenes/bounds.tscn" id="5_8g4ke"]
+[ext_resource type="PackedScene" uid="uid://bytaw5bxxhghh" path="res://scenes/ui.tscn" id="6_56gwk"]
+[ext_resource type="PackedScene" uid="uid://kosulmm3fh5c" path="res://scenes/completed.tscn" id="8_cleqw"]
+[ext_resource type="Script" uid="uid://h2voggc24xdw" path="res://scripts/asteroid_gravity.gd" id="8_hrcei"]
+[ext_resource type="Script" uid="uid://blhvmcv142iih" path="res://scenes/asteroid.gd" id="9_xa7n4"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_6ep0u"]
+
+[node name="level2" type="Node2D"]
+script = ExtResource("1_hrcei")
+
+[node name="landing_platform" parent="." instance=ExtResource("2_xa7n4")]
+position = Vector2(710, 414.00006)
+rotation = 1.0763506
+
+[node name="bounds" parent="." instance=ExtResource("5_8g4ke")]
+
+[node name="lander" parent="." instance=ExtResource("3_bo4dx")]
+position = Vector2(46, 75)
+rotational_thrust = 0.001
+
+[node name="GameOver" parent="." instance=ExtResource("4_76toy")]
+
+[node name="UI" parent="." instance=ExtResource("6_56gwk")]
+offset_left = 0.0
+offset_right = 1200.0
+
+[node name="completed" parent="." instance=ExtResource("8_cleqw")]
+visible = false
+
+[node name="asteroid_gravity" type="Area2D" parent="."]
+gravity_space_override = 3
+gravity_point = true
+gravity = 0.5
+script = ExtResource("8_hrcei")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="asteroid_gravity"]
+position = Vector2(567, 449)
+scale = Vector2(-83.88756, -83.88756)
+shape = SubResource("CircleShape2D_6ep0u")
+
+[node name="Line2D" type="Line2D" parent="asteroid_gravity"]
+points = PackedVector2Array(600, 312, 357, 427, 404, 554, 530, 631, 707, 563, 722, 461, 677, 370)
+closed = true
+
+[node name="asteroid" type="Area2D" parent="."]
+script = ExtResource("9_xa7n4")
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="asteroid"]
+
+[connection signal="body_entered" from="asteroid" to="asteroid" method="_on_body_entered"]
