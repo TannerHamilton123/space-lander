@@ -8,7 +8,7 @@
 [ext_resource type="PackedScene" uid="uid://bytaw5bxxhghh" path="res://scenes/ui.tscn" id="6_56gwk"]
 [ext_resource type="PackedScene" uid="uid://kosulmm3fh5c" path="res://scenes/completed.tscn" id="8_cleqw"]
 [ext_resource type="Script" uid="uid://h2voggc24xdw" path="res://scripts/asteroid_gravity.gd" id="8_hrcei"]
-[ext_resource type="Script" uid="uid://blhvmcv142iih" path="res://scenes/asteroid.gd" id="9_xa7n4"]
+[ext_resource type="Script" uid="uid://blhvmcv142iih" path="res://scripts/asteroid.gd" id="9_xa7n4"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_6ep0u"]
 
@@ -17,7 +17,7 @@ script = ExtResource("1_hrcei")
 
 [node name="landing_platform" parent="." instance=ExtResource("2_xa7n4")]
 position = Vector2(710, 414.00006)
-rotation = 1.0763506
+rotation = 1.1787649
 
 [node name="bounds" parent="." instance=ExtResource("5_8g4ke")]
 
@@ -37,16 +37,20 @@ visible = false
 [node name="asteroid_gravity" type="Area2D" parent="."]
 gravity_space_override = 3
 gravity_point = true
-gravity = 0.5
+gravity = 10.0
 script = ExtResource("8_hrcei")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="asteroid_gravity"]
-position = Vector2(567, 449)
+position = Vector2(567, 450.00003)
 scale = Vector2(-83.88756, -83.88756)
 shape = SubResource("CircleShape2D_6ep0u")
 
 [node name="Line2D" type="Line2D" parent="asteroid_gravity"]
-points = PackedVector2Array(600, 312, 357, 427, 404, 554, 530, 631, 707, 563, 722, 461, 677, 370)
+points = PackedVector2Array(600, 312, 357, 427, 404, 554, 530, 631, 707, 563, 722, 461, 685, 372)
+closed = true
+
+[node name="Line2D2" type="Line2D" parent="asteroid_gravity"]
+points = PackedVector2Array(564, 447, 563, 451, 570, 453, 573, 447, 571, 444, 566, 444)
 closed = true
 
 [node name="asteroid" type="Area2D" parent="."]

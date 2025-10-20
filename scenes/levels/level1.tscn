@@ -8,7 +8,7 @@
 [ext_resource type="Script" uid="uid://bg0sx3hvoeip4" path="res://scripts/topo_area.gd" id="4_tn317"]
 [ext_resource type="PackedScene" uid="uid://bytaw5bxxhghh" path="res://scenes/ui.tscn" id="5_8itgj"]
 [ext_resource type="PackedScene" uid="uid://kosulmm3fh5c" path="res://scenes/completed.tscn" id="8_8itgj"]
-[ext_resource type="Script" uid="uid://d2eneum0aafc" path="res://scenes/levels/gravity.gd" id="9_plydf"]
+[ext_resource type="Script" uid="uid://d2eneum0aafc" path="res://scripts/gravity.gd" id="9_plydf"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_8a7m2"]
 size = Vector2(1300, 842)

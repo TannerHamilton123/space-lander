@@ -17,6 +17,8 @@ var rotation_to_landing : int
 @export var landing_rotation : float
 @export var rotational_thrust : float
 func _ready():
+	var saved_color : Color = Global.player_color
+	$Sprite2D.modulate = saved_color
 	velocity = Vector2(10,0)
 	
 
@@ -74,6 +76,3 @@ func updated_labels():
 		$"../UI/SPEED".set("theme_override_colors/font_color",Color.GREEN)
 			
 	$"../UI/ProgressBar".value = FUEL
-		
-		
-		
