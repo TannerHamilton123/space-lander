@@ -55,7 +55,6 @@ func make_landing():
 	landing_half_width = collision_shape.shape.extents[0]
 	landing_x = landing_platform.position.x
 	landing_y = landing_platform.position.y
-	print(landing_x," , ", landing_y)
-	$"../UI/ROTATION".position = landing_platform.position + Vector2(-50,25)
-	$"../UI/SPEED".position = landing_platform.position + Vector2(-50,50)
+	#$"../UI/ROTATION".position = landing_platform.position + Vector2(-50,25).rotated(landing_platform.rotation)
+	#$"../UI/SPEED".position = landing_platform.position + Vector2(-50,50).rotated(landing_platform.rotation)
 	

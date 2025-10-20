@@ -38,8 +38,8 @@ grow_vertical = 2
 text = "SPACE LANDER"
 
 [node name="Lander" type="Sprite2D" parent="."]
-position = Vector2(500, 450)
-scale = Vector2(2, 2)
+position = Vector2(471.75, 470.74997)
+scale = Vector2(4.406251, 4.406251)
 texture = ExtResource("2_wu84c")
 
 [node name="ColorChoice" parent="." instance=ExtResource("3_wu84c")]
@@ -51,8 +51,8 @@ anchor_right = 0.0
 anchor_bottom = 0.0
 offset_left = 625.0
 offset_top = 395.0
-offset_right = 688.0
-offset_bottom = 478.0
+offset_right = 636.0137
+offset_bottom = 456.2483
 grow_horizontal = 1
 grow_vertical = 1
-scale = Vector2(1.4527382, 1.4041214)
+scale = Vector2(4.2103333, 4.0694323)
