@@ -11,13 +11,12 @@ var landing_y : int
 var landing_size : int
 var landing_half_width : int
 var slope = 0
-
+var point_index : int = 0
 @onready var landing_platform = $"../landing_platform"
 @onready var lander = $"../lander"
 @onready var bounds = $"../bounds"
-
 func _ready() -> void:
-	make_landing()
+	get_tree().paused = true
 	make_topo()
 	
 func make_topo():
@@ -36,28 +35,42 @@ func make_topo():
 			y = landing_y+5
 		topo_array.append(Vector2(x,y))
 
-
-	var topo = Line2D.new()
-	
-	add_child(topo)
-	topo.points = topo_array
-	topo.width = 1
-	
 	topo_array.append(Vector2(end_x,end_y))
 	topo_array.push_front(Vector2(0,800))
 	
+	#$topo.points = topo_array
+	
 	$CollisionPolygon2D.set_polygon(topo_array)
-   
 func make_landing():
-	landing_platform.position.x = randi_range(0,end_x)
-	landing_platform.position.y = randi_range(bottom_limit,top_limit)
+	var rand_topo_point = randi_range(10,topo_points)
+	landing_platform.position = topo_array[rand_topo_point]
 	var collision_shape = landing_platform.get_node("PhysicalPad/collision")
 	landing_half_width = collision_shape.shape.extents[0]
 	landing_x = landing_platform.position.x
 	landing_y = landing_platform.position.y
 	$"../lander_labels/ROTATION".position = landing_platform.position + Vector2(-100/2,25).rotated(landing_platform.get_node("PhysicalPad/collision").rotation)
 	$"../lander_labels/SPEED".position = landing_platform.position + Vector2(-100/2,50).rotated(landing_platform.get_node("PhysicalPad/collision").rotation)
-	print(landing_platform.get_node("PhysicalPad/collision").rotation)
-	#$"../UI/ROTATION".position = landing_platform.position + Vector2(-50,25).rotated(landing_platform.rotation)
-	#$"../UI/SPEED".position = landing_platform.position + Vector2(-50,50).rotated(landing_platform.rotation)
+	for i in range(rand_topo_point - 5, rand_topo_point+5):
+		var new_y = topo_array[rand_topo_point][1]
+		topo_array[i][1] = new_y
+		$topo.points = topo_array
+		$topo.queue_redraw()
 	
+func _add_next_point():
+	var current_points = $topo.points
+	if point_index < topo_array.size():
+		var point = topo_array[point_index]
+		current_points.append(point)
+		point_index += 1
+		$topo.points = current_points
+		$topo.queue_redraw()
+	else:
+		$drawing_timer.stop()
+		print("Topography built")
+		make_landing()
+		get_tree().paused = false
+
+func _on_drawing_timer_timeout() -> void:
+	_add_next_point()
+	
+	pass # Replace with function body.

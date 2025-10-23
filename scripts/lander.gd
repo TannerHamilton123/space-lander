@@ -43,9 +43,9 @@ func controls(delta):
 	if Input.is_action_just_pressed("accept"):
 		get_tree().reload_current_scene()
 	if Input.is_action_pressed("right"):
-		rotation_speed += rotational_thrust
+		rotation_speed += rotational_thrust * delta
 	if Input.is_action_pressed("left"):
-		rotation_speed -= rotational_thrust
+		rotation_speed -= rotational_thrust * delta
 
 func check_landing():
 	if speed > landing_speed or rotation_to_landing > abs(landing_rotation):

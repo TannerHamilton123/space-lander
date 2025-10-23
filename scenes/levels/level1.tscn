@@ -24,13 +24,21 @@ script = ExtResource("1_u80x2")
 [node name="lander" parent="." instance=ExtResource("2_u80x2")]
 position = Vector2(77, 85)
 landing_speed = 15.0
-rotational_thrust = 0.001
+rotational_thrust = 0.1
 FUEL = 200.0
 
 [node name="topo_area" type="Area2D" parent="."]
+process_mode = 3
 script = ExtResource("4_tn317")
 
 [node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="topo_area"]
+
+[node name="drawing_timer" type="Timer" parent="topo_area"]
+wait_time = 0.05
+autostart = true
+
+[node name="topo" type="Line2D" parent="topo_area"]
+width = 1.0
 
 [node name="GameOver" parent="." instance=ExtResource("3_y16t7")]
 
@@ -55,3 +63,4 @@ shape = SubResource("RectangleShape2D_8a7m2")
 [node name="lander_labels" parent="." instance=ExtResource("10_5ntmo")]
 
 [connection signal="body_entered" from="topo_area" to="." method="_on_topo_area_body_entered"]
+[connection signal="timeout" from="topo_area/drawing_timer" to="topo_area" method="_on_drawing_timer_timeout"]
