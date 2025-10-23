@@ -19,7 +19,7 @@ var slope = 0
 func _ready() -> void:
 	make_landing()
 	make_topo()
-	get_parent().update_labels()
+	
 func make_topo():
 	for i in range(1,topo_points):
 		slope += randi_range(-10,10)
@@ -55,7 +55,6 @@ func make_landing():
 	landing_half_width = collision_shape.shape.extents[0]
 	landing_x = landing_platform.position.x
 	landing_y = landing_platform.position.y
-	
 	#$"../UI/ROTATION".position = landing_platform.position + Vector2(-50,25).rotated(landing_platform.rotation)
 	#$"../UI/SPEED".position = landing_platform.position + Vector2(-50,50).rotated(landing_platform.rotation)
 	
