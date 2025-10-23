@@ -19,14 +19,9 @@ var slope = 0
 func _ready() -> void:
 	bounds.body_entered.connect(_on_bounds_body_entered)
 	lander.bad_landing.connect(game_over)
-	lander.good_landing.connect(completed) 
-	var landing_size = $"landing_platform/PhysicalPad/collision".shape.size       
-	$"UI/ROTATION".position = landing_platform.position + Vector2(-landing_size[0]/2,25).rotated(landing_platform.get_node("PhysicalPad/collision").rotation)
-	$"UI/SPEED".position = landing_platform.position + Vector2(-landing_size[0]/2,50).rotated(landing_platform.get_node("PhysicalPad/collision").rotation)
-	print(landing_platform.get_node("PhysicalPad/collision").rotation)
-	
- 
+	lander.good_landing.connect(completed)       
 
+	
 func _on_topo_area_body_entered(body: Node2D) -> void:
 	if body.is_in_group("player"):
 		game_over()

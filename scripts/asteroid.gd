@@ -2,7 +2,7 @@ extends Area2D
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
-	$CollisionPolygon2D.set_polygon($"../asteroid_gravity/Line2D".points)
+	$CollisionPolygon2D.set_polygon($asteroid_gravity/Line2D.points)
 	pass # Replace with function body.
 
 

@@ -1,4 +1,4 @@
-[gd_scene load_steps=11 format=3 uid="uid://bslnsn6w5d0d6"]
+[gd_scene load_steps=12 format=3 uid="uid://bslnsn6w5d0d6"]
 
 [ext_resource type="Script" uid="uid://4pgqsk2gykcg" path="res://scripts/start.gd" id="1_u80x2"]
 [ext_resource type="PackedScene" uid="uid://d4fl3bvumbxof" path="res://scenes/landing_platform.tscn" id="2_4ge6i"]
@@ -9,6 +9,7 @@
 [ext_resource type="PackedScene" uid="uid://bytaw5bxxhghh" path="res://scenes/ui.tscn" id="5_8itgj"]
 [ext_resource type="PackedScene" uid="uid://kosulmm3fh5c" path="res://scenes/completed.tscn" id="8_8itgj"]
 [ext_resource type="Script" uid="uid://d2eneum0aafc" path="res://scripts/gravity.gd" id="9_plydf"]
+[ext_resource type="PackedScene" uid="uid://ct04df6d20o1u" path="res://lander_labels.tscn" id="10_5ntmo"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_8a7m2"]
 size = Vector2(1300, 842)
@@ -22,7 +23,9 @@ script = ExtResource("1_u80x2")
 
 [node name="lander" parent="." instance=ExtResource("2_u80x2")]
 position = Vector2(77, 85)
+landing_speed = 15.0
 rotational_thrust = 0.001
+FUEL = 200.0
 
 [node name="topo_area" type="Area2D" parent="."]
 script = ExtResource("4_tn317")
@@ -41,12 +44,14 @@ visible = false
 [node name="gravity" type="Area2D" parent="."]
 visible = false
 gravity_space_override = 3
-gravity = 5.0
+gravity = 10.0
 script = ExtResource("9_plydf")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="gravity"]
 visible = false
 position = Vector2(640, 411)
 shape = SubResource("RectangleShape2D_8a7m2")
+
+[node name="lander_labels" parent="." instance=ExtResource("10_5ntmo")]
 
 [connection signal="body_entered" from="topo_area" to="." method="_on_topo_area_body_entered"]

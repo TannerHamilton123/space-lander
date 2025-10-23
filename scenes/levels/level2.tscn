@@ -1,4 +1,4 @@
-[gd_scene load_steps=11 format=3 uid="uid://j0jfxdcek6h1"]
+[gd_scene load_steps=12 format=3 uid="uid://j0jfxdcek6h1"]
 
 [ext_resource type="Script" uid="uid://4pgqsk2gykcg" path="res://scripts/start.gd" id="1_hrcei"]
 [ext_resource type="PackedScene" uid="uid://d4fl3bvumbxof" path="res://scenes/landing_platform.tscn" id="2_xa7n4"]
@@ -9,6 +9,7 @@
 [ext_resource type="PackedScene" uid="uid://kosulmm3fh5c" path="res://scenes/completed.tscn" id="8_cleqw"]
 [ext_resource type="Script" uid="uid://h2voggc24xdw" path="res://scripts/asteroid_gravity.gd" id="8_hrcei"]
 [ext_resource type="Script" uid="uid://blhvmcv142iih" path="res://scripts/asteroid.gd" id="9_xa7n4"]
+[ext_resource type="PackedScene" uid="uid://ct04df6d20o1u" path="res://lander_labels.tscn" id="10_oyk6k"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_6ep0u"]
 
@@ -16,14 +17,15 @@
 script = ExtResource("1_hrcei")
 
 [node name="landing_platform" parent="." instance=ExtResource("2_xa7n4")]
-position = Vector2(710, 414.00006)
-rotation = 1.1787649
+position = Vector2(783, 379)
+rotation = -1.4144585
 
 [node name="bounds" parent="." instance=ExtResource("5_8g4ke")]
 
 [node name="lander" parent="." instance=ExtResource("3_bo4dx")]
 position = Vector2(46, 75)
 rotational_thrust = 0.001
+FUEL = 200.0
 
 [node name="GameOver" parent="." instance=ExtResource("4_76toy")]
 
@@ -34,28 +36,31 @@ offset_right = 1200.0
 [node name="completed" parent="." instance=ExtResource("8_cleqw")]
 visible = false
 
-[node name="asteroid_gravity" type="Area2D" parent="."]
+[node name="asteroid" type="Area2D" parent="."]
+position = Vector2(60, -136)
+script = ExtResource("9_xa7n4")
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="asteroid"]
+
+[node name="asteroid_gravity" type="Area2D" parent="asteroid"]
 gravity_space_override = 3
 gravity_point = true
 gravity = 10.0
 script = ExtResource("8_hrcei")
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="asteroid_gravity"]
-position = Vector2(567, 450.00003)
+[node name="CollisionShape2D" type="CollisionShape2D" parent="asteroid/asteroid_gravity"]
+position = Vector2(568, 447.00003)
 scale = Vector2(-83.88756, -83.88756)
 shape = SubResource("CircleShape2D_6ep0u")
 
-[node name="Line2D" type="Line2D" parent="asteroid_gravity"]
-points = PackedVector2Array(600, 312, 357, 427, 404, 554, 530, 631, 707, 563, 722, 461, 685, 372)
+[node name="Line2D" type="Line2D" parent="asteroid/asteroid_gravity"]
+points = PackedVector2Array(652, 308, 468, 273, 420, 406, 404, 554, 530, 631, 707, 563, 722, 461, 685, 372)
 closed = true
 
-[node name="Line2D2" type="Line2D" parent="asteroid_gravity"]
-points = PackedVector2Array(564, 447, 563, 451, 570, 453, 573, 447, 571, 444, 566, 444)
-closed = true
-
-[node name="asteroid" type="Area2D" parent="."]
-script = ExtResource("9_xa7n4")
-
-[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="asteroid"]
+[node name="lander_labels" parent="." instance=ExtResource("10_oyk6k")]
+offset_left = 615.0
+offset_top = 482.0
+offset_right = 615.0
+offset_bottom = 482.0
 
 [connection signal="body_entered" from="asteroid" to="asteroid" method="_on_body_entered"]
