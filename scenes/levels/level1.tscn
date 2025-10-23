@@ -49,4 +49,10 @@ visible = false
 position = Vector2(640, 411)
 shape = SubResource("RectangleShape2D_8a7m2")
 
+[node name="test node" type="Control" parent="gravity"]
+layout_mode = 3
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
 [connection signal="body_entered" from="topo_area" to="." method="_on_topo_area_body_entered"]
