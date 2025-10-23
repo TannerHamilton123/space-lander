@@ -32,31 +32,6 @@ offset_bottom = 23.0
 grow_horizontal = 2
 text = "FUEL"
 
-[node name="SPEED" type="Label" parent="."]
-layout_mode = 0
-offset_left = -50.0
-offset_top = -15.0
-offset_right = 50.0
-offset_bottom = 15.0
-pivot_offset = Vector2(50, 15)
-text = "SPEED"
-horizontal_alignment = 1
-vertical_alignment = 1
-autowrap_mode = 2
-
-[node name="ROTATION" type="Label" parent="."]
-layout_mode = 0
-offset_left = -50.0
-offset_top = -15.0
-offset_right = 50.0
-offset_bottom = 15.0
-pivot_offset = Vector2(50, 15)
-theme_override_colors/font_color = Color(1, 1, 1, 1)
-text = "ROTATION"
-horizontal_alignment = 1
-vertical_alignment = 1
-autowrap_mode = 2
-
 [node name="space_background" type="Sprite2D" parent="."]
 z_index = -1
 position = Vector2(602.25, 403.5)
