@@ -11,7 +11,7 @@ var speed : int
 var test_var : float
 var landed : bool = false
 var rotation_speed : float = 0
-var rotation_to_landing : int = 0
+var rotation_to_landing : int
 
 @export var landing_speed  : float
 @export var landing_rotation : float
@@ -25,7 +25,7 @@ func _ready():
 func _physics_process(delta: float) -> void:
 	speed = velocity.length()
 	velocity += get_gravity() * delta
-	
+	updated_labels()
 	controls(delta)
 	
 	
@@ -58,3 +58,21 @@ func check_landing():
 
 		$"../completed/SCORE".text = str("SCORE: " ,int(100 - speed*2 - rotation_to_landing*2))
 		emit_signal("good_landing")
+
+
+func updated_labels():
+	rotation_to_landing  = rotation_degrees - $"../landing_platform".rotation_degrees
+	$"../UI/ROTATION".text = str(int(rotation_to_landing),"°")
+	if abs(rotation_to_landing) > landing_rotation:
+		$"../UI/ROTATION".set("theme_override_colors/font_color",Color.RED)
+	else:
+		$"../UI/ROTATION".set("theme_override_colors/font_color",Color.GREEN)
+	
+	
+	$"../UI/SPEED".text = str(speed,"mp/h")
+	if speed > landing_speed:
+		$"../UI/SPEED".set("theme_override_colors/font_color",Color.RED)
+	else:
+		$"../UI/SPEED".set("theme_override_colors/font_color",Color.GREEN)
+			
+	$"../UI/ProgressBar".value = FUEL

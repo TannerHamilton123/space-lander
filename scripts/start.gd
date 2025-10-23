@@ -14,18 +14,18 @@ var slope = 0
 @onready var landing_platform = $landing_platform
 @onready var lander = $lander
 @onready var bounds = $bounds
-@onready var entry_labels = $entry_labels
+
  
 func _ready() -> void:
-	print(lander.landing_rotation)
 	bounds.body_entered.connect(_on_bounds_body_entered)
 	lander.bad_landing.connect(game_over)
 	lander.good_landing.connect(completed) 
+	var landing_size = $"landing_platform/PhysicalPad/collision".shape.size       
+	$"UI/ROTATION".position = landing_platform.position + Vector2(-landing_size[0]/2,25).rotated(landing_platform.get_node("PhysicalPad/collision").rotation)
+	$"UI/SPEED".position = landing_platform.position + Vector2(-landing_size[0]/2,50).rotated(landing_platform.get_node("PhysicalPad/collision").rotation)
+	print(landing_platform.get_node("PhysicalPad/collision").rotation)
 	
-	
-
-func _physics_process(delta: float) -> void:
-	update_labels()
+ 
 
 func _on_topo_area_body_entered(body: Node2D) -> void:
 	if body.is_in_group("player"):
@@ -43,35 +43,3 @@ func game_over() -> void:
 func completed():
 	$completed.show()
 	get_tree().paused = true
-
-func update_labels():
-	#var landing_platform = $landing_platform
-	#var lander = $lander
-	var speed_label = $entry_labels/ROTATION
-	var rotation_label = $entry_labels/SPEED
-	
-	#var landing_rot : int = lander.landing_rotation
-	#var rotation_to_landing  = lander.rotation_degrees - landing_platform.rotation_degrees
-	#rotation_label.text = str(int(rotation_to_landing),"°")
-	#if abs(rotation_to_landing) > landing_rot:
-		#rotation_label.set("theme_override_colors/font_color",Color.RED)
-	#else:
-		#rotation_label.set("theme_override_colors/font_color",Color.GREEN)
-	#
-	#var speed = lander.speed
-	#var landing_speed = lander.landing_speed
-	#var FUEL = lander.FUEL
-	#speed_label.text = str(speed,"mp/h")
-	#if speed > landing_speed:
-		#speed_label.set("theme_override_colors/font_color",Color.RED)
-	#else:
-		#speed_label.set("theme_override_colors/font_color",Color.GREEN)
-			#
-	#$UI/ProgressBar.value = FUEL
-
-func place_labels():
-	entry_labels.position = Vector2(landing_x,landing_y)
-	entry_labels.rotation = landing_platform.rotation
-#func place_labels
-#entry_labels/$SPEED = landing_platform.position + Vector2(-landing_size[0]/2,25).rotated(landing_platform.get_node("PhysicalPad/collision").rotation)
-#$"UI/SPEED".position = landing_platform.position + Vector2(-landing_size[0]/2,50).rotated(landing_platform.get_node("PhysicalPad/collision").rotation)
