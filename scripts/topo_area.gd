@@ -18,7 +18,7 @@ var point_index : int = 0
 func _ready() -> void:
 	get_tree().paused = true
 	make_topo()
-	
+	$CollisionPolygon2D.set_polygon(topo_array)
 func make_topo():
 	for i in range(1,topo_points):
 		slope += randi_range(-10,10)
@@ -40,9 +40,9 @@ func make_topo():
 	
 	#$topo.points = topo_array
 	
-	$CollisionPolygon2D.set_polygon(topo_array)
+	
 func make_landing():
-	var rand_topo_point = randi_range(10,topo_points)
+	var rand_topo_point = randi_range(10,topo_points-10)
 	landing_platform.position = topo_array[rand_topo_point]
 	var collision_shape = landing_platform.get_node("PhysicalPad/collision")
 	landing_half_width = collision_shape.shape.extents[0]

@@ -1,0 +1,41 @@
+[gd_scene load_steps=4 format=3 uid="uid://btwof5rihs0d1"]
+
+[ext_resource type="Script" uid="uid://blhvmcv142iih" path="res://scripts/asteroid.gd" id="1_ouqw4"]
+[ext_resource type="Script" uid="uid://h2voggc24xdw" path="res://scripts/asteroid_gravity.gd" id="2_xpvwj"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_6ep0u"]
+
+[node name="asteroid_code" type="Area2D"]
+script = ExtResource("1_ouqw4")
+
+[node name="Polygon2D" type="Polygon2D" parent="."]
+scale = Vector2(0.99999994, 0.99999994)
+polygon = PackedVector2Array(163.20868, 17.115173, 165.59964, -43.83792, 130.10425, -68.87863, 105.454926, -72.69299, 101.0325, -144.39682, 66.037476, -107.14972, -8.913269, -106.52963, -14.126953, -160.98889, -77.231384, -231.50015, -91.04645, -151.58679, -157.4339, -148.02222, -135.70038, -52.966187, -164.27008, 28.763672, -155.3891, 94.293335, -125.2254, 147.172, -56.549683, 137.9715, -39.154907, 174.6651, 28.778992, 214.48956, 101.37491, 196.94452, 98.063324, 111.14221, 140.45947, 118.59656)
+
+[node name="Line2D" type="Line2D" parent="."]
+scale = Vector2(0.99999994, 0.99999994)
+width = 2.0
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="."]
+
+[node name="drawing_timer" type="Timer" parent="."]
+wait_time = 0.05
+autostart = true
+
+[node name="asteroid_gravity" type="Area2D" parent="."]
+rotation = 0.066255465
+scale = Vector2(0.99999994, 0.99999994)
+gravity_space_override = 3
+gravity_point = true
+gravity = 10.0
+script = ExtResource("2_xpvwj")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="asteroid_gravity"]
+position = Vector2(1.6689377, 2.2835364)
+rotation = 0.092422634
+scale = Vector2(-55.321285, -55.321285)
+shape = SubResource("CircleShape2D_6ep0u")
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]
+[connection signal="timeout" from="drawing_timer" to="." method="_on_drawing_timer_timeout"]
+[connection signal="body_entered" from="asteroid_gravity" to="asteroid_gravity" method="_on_body_entered"]
