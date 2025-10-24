@@ -22,12 +22,6 @@ z_index = 5
 
 [node name="bounds" parent="." instance=ExtResource("4_4ge6i")]
 
-[node name="lander" parent="." instance=ExtResource("2_u80x2")]
-position = Vector2(77, 85)
-landing_speed = 15.0
-rotational_thrust = 0.1
-FUEL = 200.0
-
 [node name="topo_area" type="Area2D" parent="."]
 process_mode = 3
 script = ExtResource("4_tn317")
@@ -82,6 +76,9 @@ scale_amount_max = 2.0
 visible = false
 position = Vector2(640, 411)
 shape = SubResource("RectangleShape2D_8a7m2")
+
+[node name="lander" parent="." instance=ExtResource("2_u80x2")]
+position = Vector2(84, 96)
 
 [connection signal="body_entered" from="topo_area" to="." method="_on_topo_area_body_entered"]
 [connection signal="timeout" from="topo_area/drawing_timer" to="topo_area" method="_on_drawing_timer_timeout"]

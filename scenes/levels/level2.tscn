@@ -10,7 +10,7 @@
 [ext_resource type="PackedScene" uid="uid://btwof5rihs0d1" path="res://scenes/levels/asteroid_code.tscn" id="9_b0vvs"]
 [ext_resource type="PackedScene" uid="uid://ct04df6d20o1u" path="res://lander_labels.tscn" id="10_oyk6k"]
 
-[node name="level2" type="Node2D"]
+[node name="level" type="Node2D"]
 script = ExtResource("1_hrcei")
 
 [node name="landing_platform" parent="." instance=ExtResource("2_xa7n4")]
@@ -20,9 +20,6 @@ position = Vector2(675, 240)
 
 [node name="lander" parent="." instance=ExtResource("3_bo4dx")]
 position = Vector2(256, 718)
-landing_speed = 15.0
-rotational_thrust = 0.1
-FUEL = 200.0
 
 [node name="GameOver" parent="." instance=ExtResource("4_76toy")]
 metadata/_edit_lock_ = true
@@ -37,12 +34,13 @@ visible = false
 metadata/_edit_lock_ = true
 
 [node name="lander_labels" parent="." instance=ExtResource("10_oyk6k")]
-z_index = 1
-offset_left = 682.0
-offset_top = 296.0
-offset_right = 682.0
-offset_bottom = 296.0
+z_index = 0
+offset_left = 675.0
+offset_top = 290.0
+offset_right = 675.0
+offset_bottom = 290.0
 
 [node name="asteroid_code" parent="." instance=ExtResource("9_b0vvs")]
+process_mode = 3
 position = Vector2(650.00006, 407)
 rotation = -1.8325958

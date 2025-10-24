@@ -24,6 +24,7 @@ func _ready() -> void:
 	
 func _on_topo_area_body_entered(body: Node2D) -> void:
 	if body.is_in_group("player"):
+		print('impact')
 		game_over()
 
 func _on_bounds_body_entered(body: Node2D) -> void:

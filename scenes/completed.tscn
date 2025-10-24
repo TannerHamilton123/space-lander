@@ -4,6 +4,7 @@
 
 [node name="completed" type="Control"]
 process_mode = 3
+process_priority = 5
 visibility_layer = 2
 z_index = 1
 layout_mode = 3

@@ -17,17 +17,19 @@ var point_index : int = 0
 @onready var bounds = $"../bounds"
 func _ready() -> void:
 	get_tree().paused = true
-	make_topo()
-
+	make_topo_array()
 
 	$topo_fill.set_polygon(topo_array)
+	$CollisionPolygon2D.set_polygon(topo_array)
 	
-func make_topo():
+func make_topo_array():
+	var x : int
+	var y : int
 	for i in range(1,topo_points):
 		slope += randi_range(-10,10)
 
-		var x : int = topo_array[i-1][0] + (end_x  / topo_points)
-		var y : int= topo_array[i-1][1] + slope
+		x = topo_array[i-1][0] + (end_x  / topo_points)
+		y = topo_array[i-1][1] + slope
 		if y < bottom_limit:
 			y = bottom_limit
 			slope = 0
@@ -38,9 +40,9 @@ func make_topo():
 			y = landing_y+5
 		topo_array.append(Vector2(x,y))
 
+	topo_array.append(Vector2(end_x,y))
 	topo_array.append(Vector2(end_x,end_y))
-	topo_array.push_front(Vector2(0,800))
-	
+	topo_array.push_front(Vector2(0,end_y))
 	
 	
 	
@@ -59,6 +61,11 @@ func make_landing():
 		$topo.points = topo_array
 		$topo.queue_redraw()
 	
+func _on_drawing_timer_timeout() -> void:
+	_add_next_point()
+	
+	pass # Replace with function body.
+
 func _add_next_point():
 	var current_points = $topo.points
 	if point_index < topo_array.size():
@@ -73,8 +80,3 @@ func _add_next_point():
 		make_landing()
 		$topo_fill.visible = true
 		get_tree().paused = false
-
-func _on_drawing_timer_timeout() -> void:
-	_add_next_point()
-	
-	pass # Replace with function body.

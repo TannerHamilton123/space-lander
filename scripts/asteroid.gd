@@ -6,7 +6,8 @@ extends Area2D
 var point_index := 0
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
-	
+
+	get_tree().paused = true
 	$CollisionPolygon2D.set_polygon($Polygon2D.get_polygon())
 	$CollisionPolygon2D.position = $Polygon2D.position
 	$Line2D.position - $Polygon2D.position
@@ -14,7 +15,6 @@ func _ready() -> void:
 	topo_array.append(topo_array[0])
 	$Polygon2D.visible = false
 	$Polygon2D.color = Color.BLACK
-	print(get_parent())
 
 func _add_next_point():
 	var current_points = $Line2D.points
@@ -35,11 +35,13 @@ func _add_next_point():
 		$Polygon2D.visible = true
 	
 func _process(delta: float) -> void: 
+	
 	pass
 
 func _on_body_entered(body: Node2D) -> void:
 	if body.is_in_group("player"):
-		$"..".game_over()                 
+		
+		owner.game_over()                 
 	pass # Replace with function body.
 
 
