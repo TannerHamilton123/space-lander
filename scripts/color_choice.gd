@@ -29,5 +29,5 @@ func _on_swatch_pressed(selected_color: Color) -> void:
 	if $"../Lander".modulate == selected_color:
 		Global.set_player_color(selected_color)
 		print("same color")
-		var first_level = "res://scenes/levels/level1.tscn"
+		var first_level = "res://scenes/levels/level0.tscn"
 		get_tree().change_scene_to_file(first_level)

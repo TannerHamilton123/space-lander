@@ -18,7 +18,10 @@ var point_index : int = 0
 func _ready() -> void:
 	get_tree().paused = true
 	make_topo()
-	$CollisionPolygon2D.set_polygon(topo_array)
+
+
+	$topo_fill.set_polygon(topo_array)
+	
 func make_topo():
 	for i in range(1,topo_points):
 		slope += randi_range(-10,10)
@@ -38,7 +41,7 @@ func make_topo():
 	topo_array.append(Vector2(end_x,end_y))
 	topo_array.push_front(Vector2(0,800))
 	
-	#$topo.points = topo_array
+	
 	
 	
 func make_landing():
@@ -68,6 +71,7 @@ func _add_next_point():
 		$drawing_timer.stop()
 		print("Topography built")
 		make_landing()
+		$topo_fill.visible = true
 		get_tree().paused = false
 
 func _on_drawing_timer_timeout() -> void:
