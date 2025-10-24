@@ -18,6 +18,7 @@ size = Vector2(1300, 842)
 script = ExtResource("1_u80x2")
 
 [node name="landing_platform" parent="." instance=ExtResource("2_4ge6i")]
+z_index = 5
 
 [node name="bounds" parent="." instance=ExtResource("4_4ge6i")]
 
@@ -34,11 +35,17 @@ script = ExtResource("4_tn317")
 [node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="topo_area"]
 
 [node name="drawing_timer" type="Timer" parent="topo_area"]
-wait_time = 0.05
+wait_time = 0.00999999999999999
 autostart = true
 
 [node name="topo" type="Line2D" parent="topo_area"]
+z_index = 2
 width = 1.0
+
+[node name="topo_fill" type="Polygon2D" parent="topo_area"]
+visible = false
+z_index = 1
+color = Color(0, 0, 0, 1)
 
 [node name="GameOver" parent="." instance=ExtResource("3_y16t7")]
 
@@ -49,18 +56,32 @@ offset_right = 1200.0
 [node name="completed" parent="." instance=ExtResource("8_8itgj")]
 visible = false
 
+[node name="lander_labels" parent="." instance=ExtResource("10_5ntmo")]
+z_index = 5
+
 [node name="gravity" type="Area2D" parent="."]
-visible = false
 gravity_space_override = 3
 gravity = 10.0
 script = ExtResource("9_plydf")
+
+[node name="grav_direction7" type="CPUParticles2D" parent="gravity"]
+position = Vector2(600, 0)
+amount = 100
+lifetime = 20.0
+lifetime_randomness = 0.5
+emission_shape = 3
+emission_rect_extents = Vector2(1200, 2)
+direction = Vector2(0, 1)
+spread = 50.0
+gravity = Vector2(0, 10)
+initial_velocity_max = 10.0
+scale_amount_min = 2.0
+scale_amount_max = 2.0
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="gravity"]
 visible = false
 position = Vector2(640, 411)
 shape = SubResource("RectangleShape2D_8a7m2")
-
-[node name="lander_labels" parent="." instance=ExtResource("10_5ntmo")]
 
 [connection signal="body_entered" from="topo_area" to="." method="_on_topo_area_body_entered"]
 [connection signal="timeout" from="topo_area/drawing_timer" to="topo_area" method="_on_drawing_timer_timeout"]
