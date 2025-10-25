@@ -40,7 +40,9 @@ offset_top = 290.0
 offset_right = 675.0
 offset_bottom = 290.0
 
-[node name="asteroid_code" parent="." instance=ExtResource("9_b0vvs")]
+[node name="Node" type="Node" parent="."]
+
+[node name="asteroid_code" parent="Node" instance=ExtResource("9_b0vvs")]
 process_mode = 3
 position = Vector2(650.00006, 407)
 rotation = -1.8325958

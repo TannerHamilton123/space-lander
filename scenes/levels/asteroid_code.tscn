@@ -22,7 +22,6 @@ width = 2.0
 
 [node name="drawing_timer" type="Timer" parent="."]
 wait_time = 0.05
-autostart = true
 
 [node name="asteroid_gravity" type="Area2D" parent="."]
 rotation = 0.066255465

@@ -40,7 +40,7 @@ func make_topo_array():
 			y = landing_y+5
 		topo_array.append(Vector2(x,y))
 
-	topo_array.append(Vector2(end_x,y))
+	topo_array.append(Vector2(end_x+10,y))
 	topo_array.append(Vector2(end_x,end_y))
 	topo_array.push_front(Vector2(0,end_y))
 	

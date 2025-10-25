@@ -31,7 +31,7 @@ func _physics_process(delta: float) -> void:
 	$left_emission.emitting = false
 	speed = velocity.length()
 	velocity += get_gravity() * delta
-	updated_labels()
+
 	controls(delta)
 	
 	var collision = move_and_collide(velocity * delta)
@@ -64,20 +64,3 @@ func check_landing():
 
 		$"../completed/SCORE".text = str("SCORE: " ,int(100 - speed*2 - rotation_to_landing*2))
 		emit_signal("good_landing")
-
-func updated_labels():
-	rotation_to_landing  = rotation_degrees - $"../landing_platform".rotation_degrees
-	$"../lander_labels/ROTATION".text = str(int(rotation_to_landing),"°")
-	if abs(rotation_to_landing) > landing_rotation:
-		$"../lander_labels/ROTATION".set("theme_override_colors/font_color",Color.RED)
-	else:
-		$"../lander_labels/ROTATION".set("theme_override_colors/font_color",Color.GREEN)
-	
-	
-	$"../lander_labels/SPEED".text = str(speed,"mp/h")
-	if speed > landing_speed:
-		$"../lander_labels/SPEED".set("theme_override_colors/font_color",Color.RED)
-	else:
-		$"../lander_labels/SPEED".set("theme_override_colors/font_color",Color.GREEN)
-			
-	$"../UI/FUEL_LEVEL".value = FUEL

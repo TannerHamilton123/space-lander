@@ -51,32 +51,16 @@ anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
 offset_left = -138.0
-offset_top = 55.0
+offset_top = 65.0
 offset_right = 138.0
-offset_bottom = 122.0
+offset_bottom = 206.0
 grow_horizontal = 2
 grow_vertical = 2
 theme_override_colors/font_color = Color(1, 1, 1, 1)
 theme_override_font_sizes/font_size = 32
-text = "PRESS ENTER TO RESTART"
-
-[node name="SCORE" type="Label" parent="."]
-layout_mode = 1
-anchors_preset = 8
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-offset_left = -197.5
-offset_top = -188.0
-offset_right = 197.5
-offset_bottom = -121.0
-grow_horizontal = 2
-grow_vertical = 2
-theme_override_colors/font_color = Color(1, 1, 1, 1)
-theme_override_font_sizes/font_size = 64
-text = "SCORE"
+text = "PRESS ENTER 
+TO CONTINUE TO 
+THE NEXT LEVEL"
 horizontal_alignment = 1
-vertical_alignment = 1
 
 [connection signal="gui_input" from="." to="." method="_on_gui_input"]

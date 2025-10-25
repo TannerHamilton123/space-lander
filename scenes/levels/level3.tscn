@@ -1,4 +1,4 @@
-[gd_scene load_steps=10 format=3 uid="uid://bkkov26ocix2g"]
+[gd_scene load_steps=11 format=3 uid="uid://bkkov26ocix2g"]
 
 [ext_resource type="Script" uid="uid://4pgqsk2gykcg" path="res://scripts/start.gd" id="1_7eb4w"]
 [ext_resource type="PackedScene" uid="uid://d4fl3bvumbxof" path="res://scenes/landing_platform.tscn" id="2_hadiw"]
@@ -7,6 +7,7 @@
 [ext_resource type="PackedScene" uid="uid://bytaw5bxxhghh" path="res://scenes/ui.tscn" id="5_ah4rv"]
 [ext_resource type="PackedScene" uid="uid://kosulmm3fh5c" path="res://scenes/completed.tscn" id="6_522sc"]
 [ext_resource type="PackedScene" uid="uid://ct04df6d20o1u" path="res://lander_labels.tscn" id="7_a82vw"]
+[ext_resource type="Script" uid="uid://bgbtybh3vsrld" path="res://scenes/levels/obstacles.gd" id="8_hadiw"]
 [ext_resource type="PackedScene" uid="uid://btwof5rihs0d1" path="res://scenes/levels/asteroid_code.tscn" id="8_t14x3"]
 [ext_resource type="PackedScene" uid="uid://bg6m4imqikpyo" path="res://scenes/lander.tscn" id="9_ahaer"]
 
@@ -41,9 +42,10 @@ offset_right = 1092.0
 offset_bottom = 311.0
 
 [node name="obstacles" type="Node" parent="."]
+process_mode = 3
+script = ExtResource("8_hadiw")
 
 [node name="asteroid_code" parent="obstacles" instance=ExtResource("8_t14x3")]
-process_mode = 3
 position = Vector2(1092, 345.99997)
 rotation = 1.3089969
 scale = Vector2(0.45332462, 0.45332462)

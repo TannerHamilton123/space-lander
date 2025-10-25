@@ -29,7 +29,7 @@ script = ExtResource("4_tn317")
 [node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="topo_area"]
 
 [node name="drawing_timer" type="Timer" parent="topo_area"]
-wait_time = 0.00999999999999999
+wait_time = 0.05
 autostart = true
 
 [node name="topo" type="Line2D" parent="topo_area"]

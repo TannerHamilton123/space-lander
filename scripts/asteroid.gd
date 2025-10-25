@@ -7,7 +7,7 @@ var point_index := 0
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
 
-	get_tree().paused = true
+	
 	$CollisionPolygon2D.set_polygon($Polygon2D.get_polygon())
 	$CollisionPolygon2D.position = $Polygon2D.position
 	$Line2D.position - $Polygon2D.position
@@ -31,7 +31,6 @@ func _add_next_point():
 		
 		$drawing_timer.stop()
 		print("Topography built")
-		get_tree().paused = false
 		$Polygon2D.visible = true
 	
 func _process(delta: float) -> void: 

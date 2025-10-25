@@ -21,7 +21,9 @@ func _ready() -> void:
 	lander.bad_landing.connect(game_over)
 	lander.good_landing.connect(completed)       
 
-	
+func _physics_process(delta: float) -> void:
+	update_labels()
+
 func _on_topo_area_body_entered(body: Node2D) -> void:
 	if body.is_in_group("player"):
 		print('impact')
@@ -39,3 +41,20 @@ func game_over() -> void:
 func completed():
 	$completed.show()
 	get_tree().paused = true
+
+func update_labels():
+	lander.rotation_to_landing  = lander.rotation_degrees - $"landing_platform".rotation_degrees
+	$"lander_labels/ROTATION".text = str(int(lander.rotation_to_landing),"°")
+	if abs(lander.rotation_to_landing) > lander.landing_rotation:
+		$"lander_labels/ROTATION".set("theme_override_colors/font_color",Color.RED)
+	else:
+		$"lander_labels/ROTATION".set("theme_override_colors/font_color",Color.GREEN)
+	
+	
+	$"lander_labels/SPEED".text = str(lander.speed,"mp/h")
+	if lander.speed > lander.landing_speed:
+		$"lander_labels/SPEED".set("theme_override_colors/font_color",Color.RED)
+	else:
+		$"lander_labels/SPEED".set("theme_override_colors/font_color",Color.GREEN)
+			
+	$"UI/FUEL_LEVEL".value = lander.FUEL
