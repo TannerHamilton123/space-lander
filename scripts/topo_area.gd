@@ -20,7 +20,7 @@ func _ready() -> void:
 	make_topo_array()
 
 	$topo_fill.set_polygon(topo_array)
-	$CollisionPolygon2D.set_polygon(topo_array)
+	
 	
 func make_topo_array():
 	var x : int
@@ -60,7 +60,7 @@ func make_landing():
 		topo_array[i][1] = new_y
 		$topo.points = topo_array
 		$topo.queue_redraw()
-	
+	$CollisionPolygon2D.set_polygon(topo_array)
 func _on_drawing_timer_timeout() -> void:
 	_add_next_point()
 	

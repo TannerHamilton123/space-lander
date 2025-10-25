@@ -20,6 +20,9 @@ size = Vector2(1437, 242)
 [node name="level" type="Node2D"]
 script = ExtResource("1_a76di")
 
+[node name="lander" parent="." instance=ExtResource("4_fj52k")]
+position = Vector2(58, 73)
+
 [node name="landing_platform" parent="." instance=ExtResource("2_d3ub6")]
 z_index = 5
 position = Vector2(622, 563)
@@ -90,6 +93,7 @@ points = PackedVector2Array(5, 567, 1200, 567)
 width = 2.0
 
 [node name="Label" type="Label" parent="."]
+z_index = 4
 offset_left = 348.0
 offset_top = 652.0
 offset_right = 873.0
@@ -97,8 +101,5 @@ offset_bottom = 701.0
 text = "LAND ON THE PLATFORM
 THE MEASUREMENTS READ GREEN WHEN  YOU ARE GOOD TO LAND!"
 horizontal_alignment = 1
-
-[node name="lander" parent="." instance=ExtResource("4_fj52k")]
-position = Vector2(58, 73)
 
 [connection signal="body_entered" from="simple_topo" to="simple_topo" method="_on_body_entered"]
