@@ -18,7 +18,7 @@ var THRUST = Vector2(0,-thrust_power)
 var landing_speed  : float = 15
 var landing_rotation : float = 15
 var rotational_thrust : float = 0.01
-var FUEL : float = 100
+var FUEL : float = 200
 func _ready():
 	print(rotational_thrust)
 	var saved_color : Color = Global.player_color
