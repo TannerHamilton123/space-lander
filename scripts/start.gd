@@ -14,7 +14,7 @@ var slope = 0
 @onready var landing_platform = $landing_platform
 @onready var lander = $lander
 @onready var bounds = $bounds
-
+@onready var explosion_scene = load("res://scenes/explosion.tscn")
  
 func _ready() -> void:
 	bounds.body_entered.connect(_on_bounds_body_entered)
@@ -35,6 +35,9 @@ func _on_bounds_body_entered(body: Node2D) -> void:
 		game_over()
 		
 func game_over() -> void:
+	var explosion = explosion_scene.instantiate()
+	explosion.position = lander.position
+	explosion.play()
 	$GameOver.show()
 	get_tree().paused = true
 
