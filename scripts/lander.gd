@@ -4,7 +4,6 @@ signal bad_landing
 signal good_landing
 
 
-
 const GRAVITY = Vector2(0,20.0)
  #must be float for it to function with delta
 var speed : int

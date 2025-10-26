@@ -11,11 +11,13 @@ var landing_y : int
 var landing_size : int
 var landing_half_width : int
 var slope = 0
+var exploded = false
 @onready var landing_platform = $landing_platform
 @onready var lander = $lander
 @onready var bounds = $bounds
 @onready var explosion_scene = load("res://scenes/explosion.tscn")
- 
+
+
 func _ready() -> void:
 	bounds.body_entered.connect(_on_bounds_body_entered)
 	lander.bad_landing.connect(game_over)
@@ -35,11 +37,12 @@ func _on_bounds_body_entered(body: Node2D) -> void:
 		game_over()
 		
 func game_over() -> void:
-	var explosion = explosion_scene.instantiate()
-	explosion.position = lander.position
-	explosion.play()
-	$GameOver.show()
-	get_tree().paused = true
+	lander.set_process_mode(PROCESS_MODE_DISABLED)
+	if exploded:
+		$GameOver.show()
+		pass
+	if not exploded:
+		_explosion()
 
 func completed():
 	$completed.show()
@@ -61,3 +64,20 @@ func update_labels():
 		$"lander_labels/SPEED".set("theme_override_colors/font_color",Color.GREEN)
 			
 	$"UI/FUEL_LEVEL".value = lander.FUEL
+
+func _explosion():
+	
+	var n = 0
+	while n < 5:
+		print(n)
+		var explosion = explosion_scene.instantiate()
+		add_child(explosion)
+		explosion.play("explosion")
+		explosion.position = lander.position+ Vector2(20,0).rotated(randi_range(0,360))
+		await get_tree().create_timer(.5).timeout
+		n+=1
+	exploded = true
+	game_over()
+		
+	
+	
