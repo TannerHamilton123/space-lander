@@ -1,0 +1,44 @@
+[gd_scene load_steps=2 format=3 uid="uid://bbqsrhkd205xt"]
+
+[ext_resource type="Script" uid="uid://blhvmcv142iih" path="res://scripts/asteroid.gd" id="1_bt5oy"]
+
+[node name="space_ship" type="Area2D"]
+script = ExtResource("1_bt5oy")
+
+[node name="Polygon2D" type="Polygon2D" parent="."]
+z_index = 2
+scale = Vector2(0.99999994, 0.99999994)
+polygon = PackedVector2Array(-256, -64, -264, -56, -264, -24, -256, 0, -240, 0, -224, 0, -224, 8, -224, 31.364746, -224, 64, -177.20512, 63.999985, -128, 64, -128, 32, -32, 32, 42.955887, 32, 100.40181, 32, 150.13689, 32, 176, 32, 176, 64, 176, 88, 235.374, 88, 296, 88, 296.00003, 13.917374, 296, -64, 296, -96, 256, -80, 232, -64, 160, -64, 160, -80, 123.91997, -80, 83.43791, -80, 48, -80, 48, -64, 7.999999, -64, 7.999999, -160, -9.536743e-07, -168, 7.999999, -184, -8.000001, -184, -9.536743e-07, -168, -8.000001, -160, -8, -64, -80, -64, -80, -104, -56, -104, -56, -120, -128, -120, -128, -104, -104, -104, -104, -64, -150.5209, -64, -200, -64, -224, -72, -240, -72)
+metadata/_edit_lock_ = true
+
+[node name="Line2D" type="Line2D" parent="."]
+z_index = 3
+scale = Vector2(0.99999994, 0.99999994)
+width = 2.0
+default_color = Color(0, 0.7411765, 0.30980393, 1)
+metadata/_edit_lock_ = true
+
+[node name="drawing_timer" type="Timer" parent="."]
+wait_time = 0.05
+
+[node name="thrust_emission" type="CPUParticles2D" parent="."]
+z_index = 1
+position = Vector2(296, 8)
+rotation = -1.5707964
+emitting = false
+amount = 100
+lifetime = 0.5
+emission_shape = 3
+emission_rect_extents = Vector2(80, 1)
+direction = Vector2(0, 1)
+spread = 30.0
+gravity = Vector2(0, 0)
+initial_velocity_min = 100.0
+initial_velocity_max = 200.0
+scale_amount_max = 3.0
+color = Color(0.9999998, 0.7650454, 0.4593448, 1)
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="."]
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]
+[connection signal="timeout" from="drawing_timer" to="." method="_on_drawing_timer_timeout"]

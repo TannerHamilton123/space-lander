@@ -1,0 +1,7 @@
+[gd_scene format=3 uid="uid://dmvurptan7gru"]
+
+[node name="topo_collision_area" type="Area2D"]
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="."]
+build_mode = 1
+polygon = PackedVector2Array(-0.875, 0, 0, 0)
