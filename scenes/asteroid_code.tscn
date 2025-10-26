@@ -28,7 +28,7 @@ rotation = 0.066255465
 scale = Vector2(50, 50)
 gravity_space_override = 2
 gravity_point = true
-gravity = 10.0
+gravity = 5.0
 script = ExtResource("2_xpvwj")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="asteroid_gravity"]

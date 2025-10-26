@@ -19,3 +19,7 @@ shape = SubResource("WorldBoundaryShape2D_kdmts")
 [node name="upperbound" type="CollisionShape2D" parent="."]
 rotation = 3.1415927
 shape = SubResource("WorldBoundaryShape2D_kdmts")
+
+[node name="upperbound2" type="CollisionShape2D" parent="."]
+position = Vector2(598, 800)
+shape = SubResource("WorldBoundaryShape2D_kdmts")

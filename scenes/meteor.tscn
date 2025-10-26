@@ -1,10 +1,11 @@
 [gd_scene load_steps=2 format=3 uid="uid://dmirhh5ib7mn2"]
 
-[ext_resource type="Script" uid="uid://c4msrtsm3yhdg" path="res://scenes/levels/meteor.gd" id="1_uny7k"]
+[ext_resource type="Script" uid="uid://c4msrtsm3yhdg" path="res://scripts/meteor.gd" id="1_uny7k"]
 
 [node name="meteor" type="Area2D"]
 script = ExtResource("1_uny7k")
-speed = 1
+
+[node name="Polygon2D" type="Polygon2D" parent="."]
 
 [node name="Line2D" type="Line2D" parent="."]
 points = PackedVector2Array(-33, 41, 7, 62, 50, 62, 81, 28, 65, -8, 11, -33, -32, -23, -40, 3, -42, 23)
