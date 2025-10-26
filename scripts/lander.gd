@@ -19,8 +19,11 @@ var landing_speed  : float = 15
 var landing_rotation : float = 15
 var rotational_thrust : float = 0.01
 var FUEL : float = 200
+
+@onready var lander_rotation = $"../landing_platform".rotation_degrees
 func _ready():
-	print(rotational_thrust)
+	#if $"../platform_landing":
+	
 	var saved_color : Color = Global.player_color
 	$Sprite2D.modulate = saved_color
 	velocity = Vector2(10,0)
@@ -58,9 +61,8 @@ func controls(delta):
 		$right_emission.emitting = true
 
 func check_landing():
-	if speed > landing_speed or rotation_to_landing > abs(landing_rotation):
+	if speed > landing_speed or abs(rotation_degrees - lander_rotation) > abs(landing_rotation):
 		emit_signal("bad_landing")
 	else:
-
-		$"../completed/SCORE".text = str("SCORE: " ,int(100 - speed*2 - rotation_to_landing*2))
+		#$"../completed/SCORE".text = str("SCORE: " ,int(100 - speed*2 - rotation_to_landing*2))
 		emit_signal("good_landing")

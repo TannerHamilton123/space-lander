@@ -79,4 +79,3 @@ func _add_next_point():
 		print("Topography built")
 		make_landing()
 		$topo_fill.visible = true
-		get_tree().paused = false

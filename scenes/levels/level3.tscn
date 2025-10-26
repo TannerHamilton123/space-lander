@@ -1,18 +1,25 @@
-[gd_scene load_steps=11 format=3 uid="uid://bkkov26ocix2g"]
+[gd_scene load_steps=12 format=3 uid="uid://bkkov26ocix2g"]
 
 [ext_resource type="Script" uid="uid://4pgqsk2gykcg" path="res://scripts/start.gd" id="1_7eb4w"]
+[ext_resource type="PackedScene" uid="uid://bxrbec3x6lrqi" path="res://scenes/levels/start_screen.tscn" id="2_72x3h"]
 [ext_resource type="PackedScene" uid="uid://d4fl3bvumbxof" path="res://scenes/landing_platform.tscn" id="2_hadiw"]
 [ext_resource type="PackedScene" uid="uid://b7t2w7wsr07r4" path="res://scenes/bounds.tscn" id="3_72x3h"]
 [ext_resource type="PackedScene" uid="uid://c7whbpeivyvsf" path="res://scenes/game_over.tscn" id="4_wb0vq"]
 [ext_resource type="PackedScene" uid="uid://bytaw5bxxhghh" path="res://scenes/ui.tscn" id="5_ah4rv"]
 [ext_resource type="PackedScene" uid="uid://kosulmm3fh5c" path="res://scenes/completed.tscn" id="6_522sc"]
-[ext_resource type="PackedScene" uid="uid://ct04df6d20o1u" path="res://lander_labels.tscn" id="7_a82vw"]
-[ext_resource type="Script" uid="uid://bgbtybh3vsrld" path="res://scenes/levels/obstacles.gd" id="8_hadiw"]
-[ext_resource type="PackedScene" uid="uid://btwof5rihs0d1" path="res://scenes/levels/asteroid_code.tscn" id="8_t14x3"]
+[ext_resource type="PackedScene" uid="uid://ct04df6d20o1u" path="res://scenes/lander_labels.tscn" id="7_a82vw"]
+[ext_resource type="Script" uid="uid://bgbtybh3vsrld" path="res://scripts/obstacles.gd" id="8_hadiw"]
+[ext_resource type="PackedScene" uid="uid://btwof5rihs0d1" path="res://scenes/asteroid_code.tscn" id="8_t14x3"]
 [ext_resource type="PackedScene" uid="uid://bg6m4imqikpyo" path="res://scenes/lander.tscn" id="9_ahaer"]
 
 [node name="level2" type="Node2D"]
 script = ExtResource("1_7eb4w")
+
+[node name="start_screen" parent="." instance=ExtResource("2_72x3h")]
+offset_left = 303.0
+offset_top = 252.0
+offset_right = 1503.0
+offset_bottom = 1052.0
 
 [node name="landing_platform" parent="." instance=ExtResource("2_hadiw")]
 z_index = 2

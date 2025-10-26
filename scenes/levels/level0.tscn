@@ -1,4 +1,4 @@
-[gd_scene load_steps=13 format=3 uid="uid://c5rpwn7dlhk6j"]
+[gd_scene load_steps=14 format=3 uid="uid://c5rpwn7dlhk6j"]
 
 [ext_resource type="Script" uid="uid://4pgqsk2gykcg" path="res://scripts/start.gd" id="1_a76di"]
 [ext_resource type="PackedScene" uid="uid://d4fl3bvumbxof" path="res://scenes/landing_platform.tscn" id="2_d3ub6"]
@@ -7,9 +7,10 @@
 [ext_resource type="PackedScene" uid="uid://c7whbpeivyvsf" path="res://scenes/game_over.tscn" id="6_m6lg1"]
 [ext_resource type="PackedScene" uid="uid://bytaw5bxxhghh" path="res://scenes/ui.tscn" id="7_3asx1"]
 [ext_resource type="PackedScene" uid="uid://kosulmm3fh5c" path="res://scenes/completed.tscn" id="8_ng1gw"]
-[ext_resource type="PackedScene" uid="uid://ct04df6d20o1u" path="res://lander_labels.tscn" id="9_yxkm4"]
+[ext_resource type="PackedScene" uid="uid://ct04df6d20o1u" path="res://scenes/lander_labels.tscn" id="9_yxkm4"]
 [ext_resource type="Script" uid="uid://d2eneum0aafc" path="res://scripts/gravity.gd" id="10_3ebcg"]
-[ext_resource type="Script" uid="uid://wvofo0gg1rdd" path="res://scenes/levels/simple_topo.gd" id="10_a76di"]
+[ext_resource type="Script" uid="uid://wvofo0gg1rdd" path="res://scripts/simple_topo.gd" id="10_a76di"]
+[ext_resource type="PackedScene" uid="uid://bxrbec3x6lrqi" path="res://scenes/levels/start_screen.tscn" id="11_d3ub6"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_8a7m2"]
 size = Vector2(1300, 842)
@@ -101,5 +102,7 @@ offset_bottom = 701.0
 text = "LAND ON THE PLATFORM
 THE MEASUREMENTS READ GREEN WHEN  YOU ARE GOOD TO LAND!"
 horizontal_alignment = 1
+
+[node name="start_screen" parent="." instance=ExtResource("11_d3ub6")]
 
 [connection signal="body_entered" from="simple_topo" to="simple_topo" method="_on_body_entered"]

@@ -1,0 +1,60 @@
+[gd_scene load_steps=12 format=3 uid="uid://rn71dl3d413k"]
+
+[ext_resource type="Script" uid="uid://4pgqsk2gykcg" path="res://scripts/start.gd" id="1_sd6f7"]
+[ext_resource type="PackedScene" uid="uid://bxrbec3x6lrqi" path="res://scenes/levels/start_screen.tscn" id="2_vnf24"]
+[ext_resource type="PackedScene" uid="uid://d4fl3bvumbxof" path="res://scenes/landing_platform.tscn" id="3_pm1y0"]
+[ext_resource type="PackedScene" uid="uid://b7t2w7wsr07r4" path="res://scenes/bounds.tscn" id="4_2eb3b"]
+[ext_resource type="PackedScene" uid="uid://c7whbpeivyvsf" path="res://scenes/game_over.tscn" id="5_kykwg"]
+[ext_resource type="PackedScene" uid="uid://bytaw5bxxhghh" path="res://scenes/ui.tscn" id="6_iyn63"]
+[ext_resource type="PackedScene" uid="uid://kosulmm3fh5c" path="res://scenes/completed.tscn" id="7_1ix84"]
+[ext_resource type="PackedScene" uid="uid://ct04df6d20o1u" path="res://scenes/lander_labels.tscn" id="8_4x4hb"]
+[ext_resource type="Script" uid="uid://b6trshsktpdbo" path="res://scenes/levels/meteors.gd" id="10_sd6f7"]
+[ext_resource type="PackedScene" uid="uid://dmirhh5ib7mn2" path="res://scenes/levels/meteor.tscn" id="11_sd6f7"]
+[ext_resource type="PackedScene" uid="uid://bg6m4imqikpyo" path="res://scenes/lander.tscn" id="11_xrw0o"]
+
+[node name="start" type="Node2D"]
+script = ExtResource("1_sd6f7")
+
+[node name="start_screen" parent="." instance=ExtResource("2_vnf24")]
+
+[node name="landing_platform" parent="." instance=ExtResource("3_pm1y0")]
+z_index = 2
+position = Vector2(1071, 697)
+scale = Vector2(0.706977, 1.0669491)
+
+[node name="lander_labels" parent="." instance=ExtResource("8_4x4hb")]
+z_index = 5
+offset_left = 1071.0
+offset_top = 725.0
+offset_right = 1071.0
+offset_bottom = 725.0
+
+[node name="bounds" parent="." instance=ExtResource("4_2eb3b")]
+
+[node name="GameOver" parent="." instance=ExtResource("5_kykwg")]
+metadata/_edit_lock_ = true
+
+[node name="UI" parent="." instance=ExtResource("6_iyn63")]
+offset_left = 0.0
+offset_right = 1200.0
+metadata/_edit_lock_ = true
+
+[node name="completed" parent="." instance=ExtResource("7_1ix84")]
+visible = false
+z_index = 5
+metadata/_edit_lock_ = true
+
+[node name="lander" parent="." instance=ExtResource("11_xrw0o")]
+position = Vector2(145, 135)
+
+[node name="meteors" type="Node" parent="."]
+script = ExtResource("10_sd6f7")
+
+[node name="meteor" parent="meteors" instance=ExtResource("11_sd6f7")]
+position = Vector2(698, 285)
+
+[node name="meteor2" parent="meteors" instance=ExtResource("11_sd6f7")]
+position = Vector2(295, 320)
+
+[node name="meteor3" parent="meteors" instance=ExtResource("11_sd6f7")]
+position = Vector2(874, 490)

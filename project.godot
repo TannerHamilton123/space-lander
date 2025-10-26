@@ -24,7 +24,6 @@ Global="*res://scripts/Global.gd"
 
 window/size/viewport_width=1200
 window/size/viewport_height=800
-window/size/initial_position_type=3
 
 [dotnet]
 

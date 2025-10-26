@@ -1,7 +1,8 @@
-[gd_scene load_steps=12 format=3 uid="uid://bslnsn6w5d0d6"]
+[gd_scene load_steps=13 format=3 uid="uid://bslnsn6w5d0d6"]
 
 [ext_resource type="Script" uid="uid://4pgqsk2gykcg" path="res://scripts/start.gd" id="1_u80x2"]
 [ext_resource type="PackedScene" uid="uid://d4fl3bvumbxof" path="res://scenes/landing_platform.tscn" id="2_4ge6i"]
+[ext_resource type="PackedScene" uid="uid://bxrbec3x6lrqi" path="res://scenes/levels/start_screen.tscn" id="2_nkeig"]
 [ext_resource type="PackedScene" uid="uid://bg6m4imqikpyo" path="res://scenes/lander.tscn" id="2_u80x2"]
 [ext_resource type="PackedScene" uid="uid://c7whbpeivyvsf" path="res://scenes/game_over.tscn" id="3_y16t7"]
 [ext_resource type="PackedScene" uid="uid://b7t2w7wsr07r4" path="res://scenes/bounds.tscn" id="4_4ge6i"]
@@ -9,13 +10,15 @@
 [ext_resource type="PackedScene" uid="uid://bytaw5bxxhghh" path="res://scenes/ui.tscn" id="5_8itgj"]
 [ext_resource type="PackedScene" uid="uid://kosulmm3fh5c" path="res://scenes/completed.tscn" id="8_8itgj"]
 [ext_resource type="Script" uid="uid://d2eneum0aafc" path="res://scripts/gravity.gd" id="9_plydf"]
-[ext_resource type="PackedScene" uid="uid://ct04df6d20o1u" path="res://lander_labels.tscn" id="10_5ntmo"]
+[ext_resource type="PackedScene" uid="uid://ct04df6d20o1u" path="res://scenes/lander_labels.tscn" id="10_5ntmo"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_8a7m2"]
 size = Vector2(1300, 842)
 
 [node name="level" type="Node2D"]
 script = ExtResource("1_u80x2")
+
+[node name="start_screen" parent="." instance=ExtResource("2_nkeig")]
 
 [node name="lander" parent="." instance=ExtResource("2_u80x2")]
 position = Vector2(84, 96)

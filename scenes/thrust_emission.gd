@@ -2,8 +2,8 @@ extends CPUParticles2D
 
 var time_thrusting := 0.0
 var max_dB := 0.0
-var min_dB = -20.0
-var time_to_max := 3.0
+var min_dB := -10.0
+var time_to_max := 0.5
 var progress : float
 var dB : float
 # Called when the node enters the scene tree for the first time.
@@ -23,7 +23,7 @@ func _process(delta: float) -> void:
 		
 	if $thrust_sound.playing:
 		time_thrusting += delta
-		progress = time_thrusting / time_to_max
+		progress = min(time_thrusting / time_to_max,1)
 		
 		dB = lerp(min_dB,max_dB,progress)
 		$thrust_sound.volume_db = dB
