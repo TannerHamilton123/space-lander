@@ -24,6 +24,11 @@ Global="*res://scripts/Global.gd"
 
 window/size/viewport_width=1200
 window/size/viewport_height=800
+window/size/initial_position_type=3
+window/size/initial_position=Vector2i(800, 0)
+window/size/initial_screen=1
+window/stretch/mode="canvas_items"
+window/stretch/aspect="expand"
 
 [dotnet]
 
