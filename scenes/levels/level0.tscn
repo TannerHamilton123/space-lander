@@ -105,4 +105,9 @@ horizontal_alignment = 1
 
 [node name="start_screen" parent="." instance=ExtResource("11_d3ub6")]
 
+[node name="boundary" type="Line2D" parent="."]
+points = PackedVector2Array(0, 0, 1200, 0, 1200, 800, 0, 800)
+closed = true
+width = 5.0
+
 [connection signal="body_entered" from="simple_topo" to="simple_topo" method="_on_body_entered"]

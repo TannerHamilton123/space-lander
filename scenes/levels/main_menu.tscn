@@ -17,10 +17,15 @@ offset_bottom = -800.0
 grow_horizontal = 2
 grow_vertical = 2
 
+[node name="boundary" type="Line2D" parent="."]
+points = PackedVector2Array(0, 0, 1200, 0, 1200, 800, 0, 800)
+closed = true
+width = 5.0
+
 [node name="space_background" type="Sprite2D" parent="."]
 z_index = -1
 position = Vector2(602.25, 403.5)
-scale = Vector2(1.5929614, 2.2361112)
+scale = Vector2(2.5, 2.5)
 texture = ExtResource("1_bqqt6")
 region_rect = Rect2(0, 0, 1200, 800)
 metadata/_edit_lock_ = true

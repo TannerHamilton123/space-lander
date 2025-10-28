@@ -20,6 +20,11 @@ script = ExtResource("1_u80x2")
 
 [node name="start_screen" parent="." instance=ExtResource("2_nkeig")]
 
+[node name="boundary" type="Line2D" parent="start_screen"]
+points = PackedVector2Array(0, 0, 1200, 0, 1200, 800, 0, 800)
+closed = true
+width = 5.0
+
 [node name="lander" parent="." instance=ExtResource("2_u80x2")]
 position = Vector2(84, 96)
 

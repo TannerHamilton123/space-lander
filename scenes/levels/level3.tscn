@@ -77,3 +77,8 @@ scale = Vector2(0.45332462, 0.45332462)
 
 [node name="lander" parent="." instance=ExtResource("9_ahaer")]
 position = Vector2(153, 689)
+
+[node name="boundary" type="Line2D" parent="."]
+points = PackedVector2Array(0, 0, 1200, 0, 1200, 800, 0, 800)
+closed = true
+width = 5.0
