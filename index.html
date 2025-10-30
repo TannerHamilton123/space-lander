@@ -5,21 +5,39 @@
 		<meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0">
 		<title>space lander</title>
 		<style>
+/* Ensure the page and canvas fill the viewport and scale responsively. */
 html, body, #canvas {
 	margin: 0;
 	padding: 0;
 	border: 0;
 }
 
+/* Make sure the document stretches full height so we can center/contain the canvas */
+html, body {
+	height: 100%;
+}
+
 body {
 	color: white;
 	background-color: black;
-	overflow: hidden;
+	overflow: hidden; /* hide any overflow caused by canvas sizing */
 	touch-action: none;
+	display: flex; /* center the canvas */
+	align-items: center;
+	justify-content: center;
 }
 
+/* Keep the canvas responsive and contained inside the viewport.
+   The engine may set the internal drawing buffer size; these CSS rules
+   ensure the visual canvas scales to fit without overflowing. */
 #canvas {
 	display: block;
+	width: 100vw;       /* take up available viewport width */
+	height: 100vh;      /* take up available viewport height */
+	max-width: 100%;
+	max-height: 100%;
+	box-sizing: border-box;
+	image-rendering: pixelated; /* preserves pixel art when scaled */
 }
 
 #canvas:focus {
