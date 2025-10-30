@@ -6,13 +6,13 @@
 [ext_resource type="PackedScene" uid="uid://b7t2w7wsr07r4" path="res://scenes/bounds.tscn" id="4_2eb3b"]
 [ext_resource type="PackedScene" uid="uid://c7whbpeivyvsf" path="res://scenes/game_over.tscn" id="5_kykwg"]
 [ext_resource type="PackedScene" uid="uid://bytaw5bxxhghh" path="res://scenes/ui.tscn" id="6_iyn63"]
-[ext_resource type="PackedScene" uid="uid://kosulmm3fh5c" path="res://scenes/completed.tscn" id="7_1ix84"]
 [ext_resource type="PackedScene" uid="uid://ct04df6d20o1u" path="res://scenes/lander_labels.tscn" id="8_4x4hb"]
 [ext_resource type="Script" uid="uid://b6trshsktpdbo" path="res://scripts/meteor_belt.gd" id="10_sd6f7"]
 [ext_resource type="PackedScene" uid="uid://dmirhh5ib7mn2" path="res://scenes/meteor.tscn" id="11_sd6f7"]
 [ext_resource type="PackedScene" uid="uid://bg6m4imqikpyo" path="res://scenes/lander.tscn" id="11_xrw0o"]
 [ext_resource type="Script" uid="uid://wvofo0gg1rdd" path="res://scripts/simple_topo.gd" id="12_pm1y0"]
 [ext_resource type="Script" uid="uid://d2eneum0aafc" path="res://scripts/gravity.gd" id="13_2eb3b"]
+[ext_resource type="PackedScene" uid="uid://df05p0vgxgln3" path="res://scenes/completed_game.tscn" id="13_pm1y0"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_kykwg"]
 size = Vector2(1300, 842)
@@ -45,11 +45,6 @@ metadata/_edit_lock_ = true
 [node name="UI" parent="." instance=ExtResource("6_iyn63")]
 offset_left = 0.0
 offset_right = 1200.0
-metadata/_edit_lock_ = true
-
-[node name="completed" parent="." instance=ExtResource("7_1ix84")]
-visible = false
-z_index = 5
 metadata/_edit_lock_ = true
 
 [node name="lander" parent="." instance=ExtResource("11_xrw0o")]
@@ -115,6 +110,10 @@ width = 2.0
 points = PackedVector2Array(0, 0, 1200, 0, 1200, 800, 0, 800)
 closed = true
 width = 5.0
+
+[node name="completed" parent="." instance=ExtResource("13_pm1y0")]
+visible = false
+z_index = 5
 
 [connection signal="timeout" from="Timer" to="meteor_belt" method="_on_timer_timeout"]
 [connection signal="body_entered" from="simple_topo" to="simple_topo" method="_on_body_entered"]

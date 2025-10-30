@@ -46,7 +46,7 @@ func game_over() -> void:
 
 func completed():
 	$completed.show()
-	get_tree().paused = true
+	lander.set_process_mode(PROCESS_MODE_DISABLED)
 
 func update_labels():
 	lander.rotation_to_landing  = lander.rotation_degrees - $"landing_platform".rotation_degrees

@@ -19,6 +19,7 @@ size = Vector2(1300, 842)
 script = ExtResource("1_u80x2")
 
 [node name="start_screen" parent="." instance=ExtResource("2_nkeig")]
+visible = false
 
 [node name="boundary" type="Line2D" parent="start_screen"]
 points = PackedVector2Array(0, 0, 1200, 0, 1200, 800, 0, 800)
@@ -29,6 +30,11 @@ width = 5.0
 position = Vector2(84, 96)
 
 [node name="landing_platform" parent="." instance=ExtResource("2_4ge6i")]
+visible = false
+z_index = 5
+
+[node name="lander_labels" parent="." instance=ExtResource("10_5ntmo")]
+visible = false
 z_index = 5
 
 [node name="bounds" parent="." instance=ExtResource("4_4ge6i")]
@@ -40,7 +46,7 @@ script = ExtResource("4_tn317")
 [node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="topo_area"]
 
 [node name="drawing_timer" type="Timer" parent="topo_area"]
-wait_time = 0.05
+wait_time = 0.02
 autostart = true
 
 [node name="topo" type="Line2D" parent="topo_area"]
@@ -60,9 +66,6 @@ offset_right = 1200.0
 
 [node name="completed" parent="." instance=ExtResource("8_8itgj")]
 visible = false
-
-[node name="lander_labels" parent="." instance=ExtResource("10_5ntmo")]
-z_index = 5
 
 [node name="gravity" type="Area2D" parent="."]
 gravity_space_override = 3

@@ -16,7 +16,7 @@ var point_index : int = 0
 @onready var lander = $"../lander"
 @onready var bounds = $"../bounds"
 func _ready() -> void:
-	get_tree().paused = true
+	lander.set_process_mode(PROCESS_MODE_DISABLED)
 	make_topo_array()
 
 	$topo_fill.set_polygon(topo_array)
@@ -78,4 +78,7 @@ func _add_next_point():
 		$drawing_timer.stop()
 		print("Topography built")
 		make_landing()
+		$"../lander_labels".visible = true
+		$"../landing_platform".visible = true
+		$"../start_screen".visible = true
 		$topo_fill.visible = true

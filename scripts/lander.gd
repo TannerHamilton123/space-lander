@@ -12,11 +12,11 @@ var landed : bool = false
 var rotation_speed : float = 0
 var rotation_to_landing : int
 
-var thrust_power : float = .3
+var thrust_power : float = .5
 var THRUST = Vector2(0,-thrust_power)
 var landing_speed  : float = 15
 var landing_rotation : float = 15
-var rotational_thrust : float = 0.01
+var rotational_thrust : float = 0.02
 var FUEL : float = 200
 
 @onready var lander_rotation = $"../landing_platform".rotation_degrees
@@ -58,6 +58,9 @@ func controls(delta):
 	if Input.is_action_pressed("left"):
 		rotation_speed -= rotational_thrust * delta
 		$right_emission.emitting = true
+		
+	if Input.is_action_just_pressed("quit"):
+		get_tree().quit()
 
 func check_landing():
 	if speed > landing_speed or abs(rotation_degrees - lander_rotation) > abs(landing_rotation):
