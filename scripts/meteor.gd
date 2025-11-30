@@ -6,13 +6,13 @@ signal player_hit_meteor
 func _ready() -> void:
 	$CollisionPolygon2D.set_polygon($Line2D.points)
 	$Polygon2D.set_polygon($Line2D.points)
-	$Polygon2D.color = Color.BLACK
+	$Polygon2D.color = Color.BLACK 
 	
 func _on_body_entered(body: Node2D) -> void:
 	if body.is_in_group("player"):
 		print("you hit a meteor!")
 		player_hit_meteor.emit()
-
+ 
 func _physics_process(delta: float) -> void:
 	position += velocity
 	rotation_degrees += .1

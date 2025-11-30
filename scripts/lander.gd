@@ -28,6 +28,7 @@ func _ready():
 	velocity = Vector2(10,0)
 	
 func _physics_process(delta: float) -> void:
+	rotation += rotation_speed
 	$thrust_emission.emitting = false
 	$right_emission.emitting = false
 	$left_emission.emitting = false
@@ -41,7 +42,7 @@ func _physics_process(delta: float) -> void:
 		if collision.get_collider().name == "PhysicalPad" and not landed:
 			landed = true
 			check_landing()
-	rotation += rotation_speed
+	
 	
 func controls(delta):
 	if Input.is_action_pressed("thrust") and FUEL > 0:

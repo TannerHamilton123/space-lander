@@ -1,8 +1,8 @@
 extends Area2D
-
 var end_x :int = 1200
 var end_y : int = 800
 var topo_points = 100
+@warning_ignore_start("integer_division")
 var topo_array : Array = [Vector2(0,int(end_y/2))]
 var bottom_limit: int = 200
 var top_limit : int = end_y - 200
@@ -53,9 +53,10 @@ func make_landing():
 	landing_half_width = collision_shape.shape.extents[0]
 	landing_x = landing_platform.position.x
 	landing_y = landing_platform.position.y
+
 	$"../lander_labels/ROTATION".position = landing_platform.position + Vector2(-100/2,25).rotated(landing_platform.get_node("PhysicalPad/collision").rotation)
 	$"../lander_labels/SPEED".position = landing_platform.position + Vector2(-100/2,50).rotated(landing_platform.get_node("PhysicalPad/collision").rotation)
-	for i in range(rand_topo_point - 5, rand_topo_point+5):
+	for i in range(rand_topo_point - 5, rand_topo_point+5):	
 		var new_y = topo_array[rand_topo_point][1]
 		topo_array[i][1] = new_y
 		$topo.points = topo_array
