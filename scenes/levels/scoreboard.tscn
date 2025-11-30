@@ -1,0 +1,71 @@
+[gd_scene load_steps=3 format=3 uid="uid://bb24a2h01okl0"]
+
+[ext_resource type="Texture2D" uid="uid://bog53013skwal" path="res://assets/360_F_470736409_BjMO4XuHintvApcIyuJM7DR65rTfWdXQ.jpg" id="1_wigbc"]
+[ext_resource type="Script" uid="uid://cbtwf64vnrc4a" path="res://scenes/levels/scoreboard.gd" id="1_ygnoc"]
+
+[node name="MainMenu" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_ygnoc")
+
+[node name="space_background" type="Sprite2D" parent="."]
+z_index = -1
+position = Vector2(602.25, 403.5)
+scale = Vector2(1.5929614, 2.2361112)
+texture = ExtResource("1_wigbc")
+region_rect = Rect2(0, 0, 1200, 800)
+metadata/_edit_lock_ = true
+
+[node name="Label" type="Label" parent="."]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -170.0
+offset_top = 93.0
+offset_right = 176.0
+offset_bottom = 160.0
+grow_horizontal = 2
+theme_override_font_sizes/font_size = 48
+text = "SPACE LANDER LEADERBOARD"
+
+[node name="ROTATE2" type="Label" parent="."]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.50100005
+anchor_right = 0.50100005
+offset_left = -224.70007
+offset_top = 176.0
+offset_right = 225.29993
+offset_bottom = 215.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_colors/font_color = Color(0.37254903, 0.8039216, 0.89411765, 1)
+text = "ENTER YOUR NAME TO BE PLACED ON THE LEADERBOARD!"
+
+[node name="ROTATE2" type="Label" parent="ROTATE2"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.50100005
+anchor_right = 0.50100005
+offset_left = -216.95001
+offset_top = 120.0
+offset_right = 233.04997
+offset_bottom = 159.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_colors/font_color = Color(0.37254903, 0.8039216, 0.89411765, 1)
+text = "PRESS ENTER TO SUBMIT"
+
+[node name="TextEdit" type="TextEdit" parent="."]
+layout_mode = 0
+offset_left = 383.0
+offset_top = 240.0
+offset_right = 804.0
+offset_bottom = 287.0
+placeholder_text = "NAME"
+wrap_mode = 1
