@@ -15,6 +15,15 @@
 [node name="start" type="Node2D"]
 script = ExtResource("1_t7v7a")
 
+[node name="score" type="Label" parent="."]
+z_index = 10
+offset_left = 913.0
+offset_top = 750.0
+offset_right = 1043.0
+offset_bottom = 795.0
+theme_override_font_sizes/font_size = 32
+text = "Score"
+
 [node name="start_screen" parent="." instance=ExtResource("2_xx6b8")]
 offset_left = -367.0
 offset_top = -219.0

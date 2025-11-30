@@ -1,7 +1,7 @@
 [gd_scene load_steps=3 format=3 uid="uid://bb24a2h01okl0"]
 
 [ext_resource type="Texture2D" uid="uid://bog53013skwal" path="res://assets/360_F_470736409_BjMO4XuHintvApcIyuJM7DR65rTfWdXQ.jpg" id="1_wigbc"]
-[ext_resource type="Script" uid="uid://cbtwf64vnrc4a" path="res://scenes/levels/scoreboard.gd" id="1_ygnoc"]
+[ext_resource type="Script" uid="uid://cbtwf64vnrc4a" path="res://scripts/scoreboard.gd" id="1_ygnoc"]
 
 [node name="MainMenu" type="Control"]
 layout_mode = 3
@@ -69,3 +69,13 @@ offset_right = 804.0
 offset_bottom = 287.0
 placeholder_text = "NAME"
 wrap_mode = 1
+
+[node name="score" type="Label" parent="."]
+z_index = 10
+layout_mode = 0
+offset_left = 1066.0
+offset_top = 754.0
+offset_right = 1196.0
+offset_bottom = 799.0
+theme_override_font_sizes/font_size = 32
+text = "Score"

@@ -15,6 +15,15 @@
 [node name="level" type="Node2D"]
 script = ExtResource("1_hrcei")
 
+[node name="score" type="Label" parent="."]
+z_index = 10
+offset_left = 917.0
+offset_top = 754.0
+offset_right = 1047.0
+offset_bottom = 799.0
+theme_override_font_sizes/font_size = 32
+text = "Score"
+
 [node name="landing_platform" parent="." instance=ExtResource("2_xa7n4")]
 position = Vector2(675, 240)
 

@@ -25,6 +25,7 @@ func _ready() -> void:
 
 func _physics_process(delta: float) -> void:
 	update_labels()
+	update_score()
 
 func _on_topo_area_body_entered(body: Node2D) -> void:
 	if body.is_in_group("player"):
@@ -79,5 +80,7 @@ func _explosion():
 	exploded = true
 	game_over()
 		
-	
+func update_score():
+	var score_label = $score
+	score_label.text = "SCORE: " + str(snapped(Global.score,1))
 	

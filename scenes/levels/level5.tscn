@@ -23,6 +23,15 @@ size = Vector2(1437, 242)
 [node name="start" type="Node2D"]
 script = ExtResource("1_sd6f7")
 
+[node name="score" type="Label" parent="."]
+z_index = 10
+offset_left = 819.0
+offset_top = 754.0
+offset_right = 949.0
+offset_bottom = 799.0
+theme_override_font_sizes/font_size = 32
+text = "Score"
+
 [node name="start_screen" parent="." instance=ExtResource("2_vnf24")]
 
 [node name="landing_platform" parent="." instance=ExtResource("3_pm1y0")]

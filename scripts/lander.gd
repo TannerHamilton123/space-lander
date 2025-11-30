@@ -20,6 +20,8 @@ var rotational_thrust : float = 0.02
 var FUEL : float = 200
 
 @onready var lander_rotation = $"../landing_platform".rotation_degrees
+
+
 func _ready():
 	#if $"../platform_landing":
 	
@@ -28,6 +30,7 @@ func _ready():
 	velocity = Vector2(10,0)
 	
 func _physics_process(delta: float) -> void:
+	Global.score += delta
 	rotation += rotation_speed
 	$thrust_emission.emitting = false
 	$right_emission.emitting = false
@@ -42,7 +45,6 @@ func _physics_process(delta: float) -> void:
 		if collision.get_collider().name == "PhysicalPad" and not landed:
 			landed = true
 			check_landing()
-	
 	
 func controls(delta):
 	if Input.is_action_pressed("thrust") and FUEL > 0:
@@ -67,5 +69,4 @@ func check_landing():
 	if speed > landing_speed or abs(rotation_degrees - lander_rotation) > abs(landing_rotation):
 		emit_signal("bad_landing")
 	else:
-		#$"../completed/SCORE".text = str("SCORE: " ,int(100 - speed*2 - rotation_to_landing*2))
 		emit_signal("good_landing")
