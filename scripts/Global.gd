@@ -15,3 +15,14 @@ func _ready():
 	SilentWolf.configure_scores({
 	"open_scene_on_close": "res://scenes/MainPage.tscn"
 	})
+func start_music():
+	pass
+	
+	
+func _ready() -> void:
+	var background_music  = AudioStreamPlayer.new()
+	add_child(background_music)
+	background_music.set_physics_process(PROCESS_MODE_ALWAYS)
+	background_music.stream = load("res://assets/perfect-beauty-191271.mp3") 
+	print(background_music.stream)
+	background_music.play()

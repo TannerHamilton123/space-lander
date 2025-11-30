@@ -26,6 +26,11 @@ position = Vector2(256, 718)
 [node name="GameOver" parent="." instance=ExtResource("4_76toy")]
 metadata/_edit_lock_ = true
 
+[node name="boundary" type="Line2D" parent="GameOver"]
+points = PackedVector2Array(0, 0, 1200, 0, 1200, 800, 0, 800)
+closed = true
+width = 5.0
+
 [node name="UI" parent="." instance=ExtResource("6_56gwk")]
 offset_left = 0.0
 offset_right = 1200.0
@@ -53,3 +58,8 @@ rotation = -1.8325958
 [node name="start_screen" parent="." instance=ExtResource("11_gycjm")]
 offset_top = 245.0
 offset_bottom = 1045.0
+
+[node name="boundary" type="Line2D" parent="."]
+points = PackedVector2Array(0, 0, 1200, 0, 1200, 800, 0, 800)
+closed = true
+width = 5.0
