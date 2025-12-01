@@ -5,11 +5,12 @@ func _unhandled_input(event: InputEvent) -> void:
 	var next_level_number = current_scene_file.to_int() + 1
 	var next_level_path = "res://scenes/levels/level" + str(next_level_number)+".tscn"
 	var main_menu = "res://scenes/levels/main_menu.tscn"
+	var scoreboard= "res://scenes/levels/scoreboard.tscn"
 	if self.visible:
 		if event.is_action_pressed("accept"):
 			if next_level_number  == 6:
 				get_tree().paused = false
-				get_tree().change_scene_to_file(main_menu)
+				get_tree().change_scene_to_file(scoreboard)
 			else:
 				get_tree().paused = false	
 				get_tree().change_scene_to_file(next_level_path)
