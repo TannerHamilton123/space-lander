@@ -124,5 +124,14 @@ width = 5.0
 visible = false
 z_index = 5
 
+[node name="LEVEL_LABEL" type="Label" parent="."]
+z_index = 4
+offset_left = 174.0
+offset_top = 725.0
+offset_right = 699.0
+offset_bottom = 774.0
+text = "LEVEL 6: AFTER YOU, NO AFTER YOU"
+horizontal_alignment = 1
+
 [connection signal="timeout" from="Timer" to="meteor_belt" method="_on_timer_timeout"]
 [connection signal="body_entered" from="simple_topo" to="simple_topo" method="_on_body_entered"]
