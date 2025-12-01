@@ -103,6 +103,15 @@ text = "LAND ON THE PLATFORM
 THE MEASUREMENTS READ GREEN WHEN  YOU ARE GOOD TO LAND!"
 horizontal_alignment = 1
 
+[node name="LEVEL_LABEL" type="Label" parent="."]
+z_index = 4
+offset_left = 672.0
+offset_top = 65.0
+offset_right = 1197.0
+offset_bottom = 114.0
+text = "LEVEL 1: THE BASICS"
+horizontal_alignment = 1
+
 [node name="start_screen" parent="." instance=ExtResource("11_d3ub6")]
 
 [node name="boundary" type="Line2D" parent="."]

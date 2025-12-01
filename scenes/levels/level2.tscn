@@ -24,6 +24,16 @@ offset_bottom = 799.0
 theme_override_font_sizes/font_size = 32
 text = "Score"
 
+[node name="LEVEL_LABEL" type="Label" parent="score"]
+z_index = 4
+layout_mode = 0
+offset_left = -242.0
+offset_top = -697.0
+offset_right = 283.0
+offset_bottom = -648.0
+text = "LEVEL 3: AROUND WE GO"
+horizontal_alignment = 1
+
 [node name="landing_platform" parent="." instance=ExtResource("2_xa7n4")]
 position = Vector2(675, 240)
 
