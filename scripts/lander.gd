@@ -61,6 +61,7 @@ func controls(delta):
 	if Input.is_action_pressed("left"):
 		rotation_speed -= rotational_thrust * delta
 		$right_emission.emitting = true
+
 		
 	if Input.is_action_just_pressed("quit"):
 		get_tree().quit()
