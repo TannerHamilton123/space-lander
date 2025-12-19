@@ -12,11 +12,11 @@ var landed : bool = false
 var rotation_speed : float = 0
 var rotation_to_landing : int
 
-var thrust_power : float = .25
+var thrust_power : float = .5
 var THRUST = Vector2(0,-thrust_power)
 var landing_speed  : float = 15
 var landing_rotation : float = 15
-var rotational_thrust : float = 0.02
+var rotational_thrust : float = 0.01
 var FUEL : float = 200
 
 @onready var lander_rotation = $"../landing_platform".rotation_degrees
