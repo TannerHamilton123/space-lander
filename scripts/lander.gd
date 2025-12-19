@@ -12,7 +12,7 @@ var landed : bool = false
 var rotation_speed : float = 0
 var rotation_to_landing : int
 
-var thrust_power : float = .5
+var thrust_power : float = .25
 var THRUST = Vector2(0,-thrust_power)
 var landing_speed  : float = 15
 var landing_rotation : float = 15
@@ -27,7 +27,7 @@ func _ready():
 	
 	var saved_color : Color = Global.player_color
 	$Sprite2D.modulate = saved_color
-	velocity = Vector2(10,0)
+	velocity = Vector2(0,0)
 	
 func _physics_process(delta: float) -> void:
 	Global.score += delta
